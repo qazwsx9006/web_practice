@@ -78,7 +78,7 @@ iron man 區塊檢視
 
 #### 登入頁
 [DEMO PAGE](http://qazwsx9006.github.io/web_practice/gmb/login.html)
-#### 內容業
+#### 內容頁
 [DEMO PAGE](http://qazwsx9006.github.io/web_practice/gmb/show.html)
 
 ## 切版練習_2
