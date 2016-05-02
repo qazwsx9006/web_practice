@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script>
+	
+	$(function(){
+		ArRun();//一開始就先抓一次。
+
+		/*時鐘上的數字分布*/
+		for(i=0;i<12;i++){
+			var numDeg = i*30+120;
+			/*li旋轉放置數字位置*/
+			$('#clocknum>li').eq(i).css({
+				"-webkit-transform": "rotateZ("+numDeg+"deg)",
+				"-moz-transform": "rotateZ("+numDeg+"deg)",
+				"-ms-transform": "rotateZ("+numDeg+"deg)",
+				"-o-transform": "rotateZ("+numDeg+"deg)",
+				"transform": "rotateZ("+numDeg+"deg)"
+			});
+			/*用span修正字的角度*/
+			$('#clocknum>li span').eq(i).css({
+				"-webkit-transform": "rotateZ(-"+numDeg+"deg)",
+				"-moz-transform": "rotateZ(-"+numDeg+"deg)",
+				"-ms-transform": "rotateZ(-"+numDeg+"deg)",
+				"-o-transform": "rotateZ(-"+numDeg+"deg)",
+				"transform": "rotateZ(-"+numDeg+"deg)"
+			});
+		}
+
+		/*時鐘動*/
+		setInterval(ArRun,1000);
+		function ArRun(){
+			var time = new Date();
+			var secDeg = time.getSeconds()*6-90;//for秒針
+			var minDeg = time.getMinutes()*6-90;//for分針
+			var hourTime = time.getHours();//for時針，抓整點的角度
+			var hourMinTime = time.getMinutes()*.5;//for時針用，抓非整點的移動角度
+			var hourDeg = hourTime*30+hourMinTime-90;//for時針
+
+
+			$('#secAr').css({
+				"-webkit-transform": "rotateZ("+secDeg+"deg)",
+				"-moz-transform": "rotateZ("+secDeg+"deg)",
+				"-ms-transform": "rotateZ("+secDeg+"deg)",
+				"-o-transform": "rotateZ("+secDeg+"deg)",
+				"transform": "rotateZ("+secDeg+"deg)"
+			});
+			$('#minAr').css({
+				"-webkit-transform": "rotateZ("+minDeg+"deg)",
+				"-moz-transform": "rotateZ("+minDeg+"deg)",
+				"-ms-transform": "rotateZ("+minDeg+"deg)",
+				"-o-transform": "rotateZ("+minDeg+"deg)",
+				"transform": "rotateZ("+minDeg+"deg)"
+			});
+			$('#hourAr').css({
+				"-webkit-transform": "rotateZ("+hourDeg+"deg)",
+				"-moz-transform": "rotateZ("+hourDeg+"deg)",
+				"-ms-transform": "rotateZ("+hourDeg+"deg)",
+				"-o-transform": "rotateZ("+hourDeg+"deg)",
+				"transform": "rotateZ("+hourDeg+"deg)"
+			});
+		}
+					
+	
+	})
+
+	</script>
+	<style>
+	*{list-style: none; padding: 0;}
+	#clock{
+		width: 480px;
+		height:480px;
+		background-color: #eee;
+		border: 10px solid #333;
+		border-radius: 50%;
+		margin: auto;
+		position: relative;
+		box-shadow: 1px 1px 3px #666;
+	}
+	#clock:after{
+		content:'';
+		display: block;
+		width:50px;
+		height:50px;
+		border-radius: 50%;
+		box-shadow: 1px 1px 5px #666;
+		background-color: #777;
+		color:#aaa;
+		position: absolute;
+		left: 215px;
+		top: 215px;
+	}
+	#clock > div{
+		-webkit-transform-origin: left center;
+		-moz-transform-origin: left center;
+		-ms-transform-origin: left center;
+		-o-transform-origin: left center;
+		transform-origin: left center;
+		box-shadow: 1px 1px 3px #666;
+		position: absolute;
+		left: 50%;
+	}
+	#hourAr{
+		width:160px;
+		height:30px;
+		background-color: #111;
+		border-radius: 50px 150% 150% 50px;
+		top:225px;
+		
+	}
+	#minAr{
+		width:210px;
+		height:20px;
+		background-color: #222;
+		border-radius: 50px 200% 200% 50px;
+		top: 230px;
+	}
+	#secAr{
+		width: 230px;
+		height: 6px;
+		background-color: #444;
+		border-radius: 50%;
+		top: 237px;
+	}
+	#clocknum{
+		width: 480px;
+		height:480px;
+		border-radius: 50%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		margin: 0;
+	}
+	#clocknum>li{
+		width:240px;
+		height:50px;
+		position: absolute;
+		top:215px;
+		font-size: 4em;
+		font-family: Arial;
+		-webkit-transform-origin: right center;
+		-moz-transform-origin: right center;
+		-ms-transform-origin: right center;
+		-o-transform-origin: right center;
+		transform-origin: right center;
+	}
+	#clocknum>li span{
+		text-align: center;
+		display:block;
+		width:75px;
+		-webkit-transform-origin: center center;
+		-moz-transform-origin: center center;
+		-ms-transform-origin: center center;
+		-o-transform-origin: center center;
+		transform-origin: center center;
+		cursor: default;
+		text-shadow: 1px 1px 3px #111;
+	}
+	
+	</style>
+</head>
+<body>
+	<div id="clock">
+		<ul id="clocknum">
+			<li><span>1</span></li>
+			<li><span>2</span></li>
+			<li><span>3</span></li>
+			<li><span>4</span></li>
+			<li><span>5</span></li>
+			<li><span>6</span></li>
+			<li><span>7</span></li>
+			<li><span>8</span></li>
+			<li><span>9</span></li>
+			<li><span>10</span></li>
+			<li><span>11</span></li>
+			<li><span>12</span></li>
+		</ul>
+		<div id="hourAr"></div>
+		<div id="minAr"></div>
+		<div id="secAr"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>無標題文件</title>
+<style>
+.wrap{
+	max-width:920px;
+	/*outline:1px solid #000;*/
+	margin:auto;
+}
+.btn{
+	width:100%;
+	height:40px;
+	/*outline:2px solid #F00;*/
+	letter-spacing:-4px;
+}
+.btn > div{
+	display:inline-block;
+	height:40px;
+	width:20%;
+	transition:1.2s;
+}
+.btn a{
+	text-align:center;
+	line-height:40px;
+	text-decoration:none;
+	letter-spacing:0px;
+	display:block;
+	width:100%;
+	height:40px;
+	outline:1px solid #ddd;
+	box-shadow:0 0 3px 1px #666;
+	position:relative;
+}
+.btn a > div{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-image:linear-gradient(180deg, #eee 0%, #ddd 50%, #aaa 50%, #888 100%);
+}
+.btn a:nth-child(n+2){
+	background-color:#ddd;
+	-webkit-transform-origin:center top;
+	-webkit-transform:perspective(600px) rotateX(90deg);
+}
+.btn a:nth-child(5){
+	transition:.3s ease-in;
+}
+.btn a:nth-child(4){
+	transition:.3s .3s ease-in;
+}
+.btn a:nth-child(3){
+	transition:.3s .6s ease-in;
+}
+.btn a:nth-child(2){
+	transition:.3s .9s ease-in;
+}
+.btn > div:hover{
+	height:200px;
+}
+.btn > div:hover a{
+	-webkit-transform:perspective(600px) rotateX(0deg);
+}
+.btn > div:hover a:nth-child(5){
+	background-color:#eee;
+	transition:.3s 1s ease-in;
+}
+.btn > div:hover a:nth-child(4){
+	background-color:#eee;
+	transition:.3s .7s ease-in;
+}
+.btn > div:hover a:nth-child(3){
+	background-color:#eee;
+	transition:.3s .4s ease-in;
+}
+.btn > div:hover a:nth-child(2){
+	background-color:#eee;
+	transition:.3s .1s ease-in;
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+	<div class="btn">
+    	<div>
+        	<a href="#"><div>b11</div></a>
+            <a href="#">b12</a>
+            <a href="#">b13</a>
+            <a href="#">b14</a>
+            <a href="#">b15</a>
+        </div>
+    	<div>
+        	<a href="#"><div>b21</div></a>
+            <a href="#">b22</a>
+            <a href="#">b23</a>
+            <a href="#">b24</a>
+            <a href="#">b25</a>
+        </div>
+    	<div>
+        	<a href="#"><div>b31</div></a>
+            <a href="#">b32</a>
+            <a href="#">b33</a>
+            <a href="#">b34</a>
+            <a href="#">b35</a>
+        </div>
+    	<div>
+        	<a href="#"><div>b41</div></a>
+            <a href="#">b42</a>
+            <a href="#">b43</a>
+            <a href="#">b44</a>
+            <a href="#">b45</a>
+        </div>
+    	<div>
+        	<a href="#"><div>b51</div></a>
+            <a href="#">b52</a>
+            <a href="#">b53</a>
+            <a href="#">b54</a>
+            <a href="#">b55</a>
+        </div>
+   	</div>
+</div>
+</body>
+</html>

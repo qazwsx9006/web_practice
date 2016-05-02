@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.bg{
+		background: #444;
+		color: #fff;
+	}
+	div{
+		width: 160px;
+		display: none;
+	}
+	input{
+		width:160px;
+	}
+	div>input{
+		display: none;
+	}
+	div>label{
+		display: block;
+		width: 165px;
+		text-align: center;
+		background: #ddd;
+	}
+	</style>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script>
+	$(function(){
+		var cbx = new String;
+		var length = $('input').length;
+		alert(length);
+
+		//選取時變色
+		$('div>input').click(function(){
+			var ind = $(this).index();
+			if($(this).prop('checked') == true){				
+				$('label').eq(ind/2).addClass('bg');
+			}else{
+				$('label').eq(ind/2).removeClass('bg');
+			}
+			
+		});
+
+		
+
+		//儲存成陣列
+		$('#btn').click(function(){
+			cbx="";
+			for(i=0;i<length;i++){
+				if($('input').eq(i).prop('checked') == true ){
+					cbx += $('input').eq(i).val();
+				}else{
+					if($('input').eq(i-1).prop('checked') == true){
+						cbx += ",";
+					}
+				}
+			}
+			//將上面取得的cbx字串分割成陣列
+			var cbxa = cbx.split(',');
+			if(cbxa[cbxa.length-1]==""){cbxa.pop()};
+			if(cbxa[0]==""){cbxa.shift()};//刪掉陣列中的空字串
+			var cbxai = cbxa.length;
+			var choice="";
+			var sym,a,b,d;
+			//將陣列中各字串分別提出來
+			for(i=0;i<cbxai;i++){
+				i==cbxai-1?sym="":sym=",";
+				var cbxb = cbxa[i].split('-');//將陣列中各字串分別提出來在做一次分割成陣列
+				if(cbxb.length<=2){
+					a = cbxb.shift();
+					choice += '週'+a+sym;//如果只有一個星期幾。
+				}else{
+					a = cbxb.shift();
+					b = cbxb.pop();
+					d = cbxb.pop();
+					choice += '週'+a+'~週'+d+sym;//如果有多個星期幾，則取頭尾的數值。
+				}
+			}
+			$('#show').val(choice);
+		});
+		
+	})
+
+	function slidein(){
+			$('div').slideDown();
+	}
+	function slideup(){
+			$('div').slideUp();
+	}
+	</script>
+	
+</head>
+<body>
+	<input type="text" id="show" value="" onfocus="slidein()" >選取禮拜幾
+	<div>
+		<input type="checkbox" name="week" id="week1" value="一-"><label for="week1">星期一</label>
+		<input type="checkbox" name="week" id="week2" value="二-"><label for="week2">星期二</label>
+		<input type="checkbox" name="week" id="week3" value="三-"><label for="week3">星期三</label>
+		<input type="checkbox" name="week" id="week4" value="四-"><label for="week4">星期四</label>
+		<input type="checkbox" name="week" id="week5" value="五-"><label for="week5">星期五</label>
+		<input type="checkbox" name="week" id="week6" value="六-"><label for="week6">星期六</label>
+		<input type="checkbox" name="week" id="week7" value="日-"><label for="week7">星期日</label>
+		<button id="btn" onclick="slideup()">確認</button>
+	</div>
+	
+</body>
+</html>

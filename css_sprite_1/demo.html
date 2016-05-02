@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			setInterval(function(){
+				$('img').toggleClass('show');
+			},200)
+		})
+	</script>
+</head>
+<body>
+	<div><img src="bob.jpg" alt=""></div>
+	<div><img src="bob2.jpg" alt=""></div>
+</body>
+</html>
+<style>
+	div{
+		width: 130px;
+		height: 130px;
+		overflow: hidden;
+		background: #000;
+		position: relative;
+	}
+	img{
+		position: absolute;
+		top: -130px;
+	}
+	img.show{
+		top: 0px;
+	}
+
+</style>
