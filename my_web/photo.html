@@ -9,11 +9,11 @@
 <link href="css/lightbox.css" rel="stylesheet" />
 <script>
 $(function(){
-	var hh = screen.height;	
+	var hh = screen.height;
 	var ww = screen.width;
 	$('.wrap').css({minWidth:ww*.67});
 	$('.wrap').css({height:(hh*.9)+5});
-	
+
 	if( hh < 810 ){
 		$('.right .content .picbox').css({top:0});
 		$('.right .content .picbtn').css({top:'5%'});
@@ -24,9 +24,9 @@ $(function(){
 	if(hh>940){
 		$('.right .content .name').css({fontSize:'5em',top:'5%'});
 	}
-	
+
 	$('.right .content .picbtn a span:first').addClass('fa-dot-circle-o');
-	
+
 	$('.right .content .picbtn a span').click(function(){
 		var xx = $(this).index();
 		$('.right .content .picbox .bigpic').css({left:'-'+xx*100+'%'})
@@ -109,7 +109,7 @@ body { padding:0; margin:0;}
 	color:#210;
 }
 .right .btn a .bb{
-	
+
 	background-color:#111;
 	-webkit-backface-visibility:hidden;
 	-webkit-transform:perspective(600px) translateZ(-28px) rotateX(0deg);
@@ -118,10 +118,10 @@ body { padding:0; margin:0;}
 	text-shadow:0 0 5px #FFF;
 }
 .right .btn a:hover .aa{
-	-webkit-transform:perspective(600px) translateZ(-28px) rotateX(0deg);	
+	-webkit-transform:perspective(600px) translateZ(-28px) rotateX(0deg);
 }
 .right .btn a:hover .bb{
-	-webkit-transform:perspective(600px) translateZ(-28px) rotateX(-91deg);	
+	-webkit-transform:perspective(600px) translateZ(-28px) rotateX(-91deg);
 }
 /*主內容*/
 .right .content{
@@ -256,7 +256,7 @@ body { padding:0; margin:0;}
 	left:-100%;
 }
 .right .content .pic div:hover .info{
-	width:100%;	
+	width:100%;
 }
 
 .right .content .pic div .info h3{
@@ -354,7 +354,7 @@ body { padding:0; margin:0;}
 	<div class="left">
     	<div class="menu">
         	<h3>Templates</h3>
-            <a href="http://dl.dropboxusercontent.com/u/227563841/jarallax_my/index.html">Jarallax_MYWeb</a>
+            <a href="#">menu1</a>
             <a href="#">menu2</a>
             <a href="#">menu3</a>
             <a href="#">menu4</a>
@@ -386,7 +386,7 @@ body { padding:0; margin:0;}
             <a href="about.html">
                 <div class="aa">About</div>
                 <div class="bb fa-user"></div>
-            </a>           
+            </a>
         </div>
         <div class="content">
        		<div class="name"><span>M</span><span>Y</span>photo</div>
@@ -833,7 +833,7 @@ body { padding:0; margin:0;}
                 </a>
             </div>
         </div>
-        <div class="footer"></div> 
+        <div class="footer"></div>
 	</div>
 </div>
 </body>
