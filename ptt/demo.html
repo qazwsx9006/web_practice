@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script> 
+	<script>
+	$(function(){
+		var ini = 0;
+		$('#left').click(function(){
+			if(ini==7){
+				return
+			}else{
+				ini++;
+			}
+			var dist = ini*740;
+			$('ul').css("left",-dist);
+		});
+		$('#right').click(function(){
+			if(ini==0){
+				return
+			}else{
+				ini--;
+			}
+			var dist = ini*740;
+			$('ul').css("left",-dist);
+		});
+	})
+
+	</script>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<style>
+	*{padding: 0;margin: 0;list-style: none;}
+	img{
+		display: inline-block;
+		width: 80%;
+		box-shadow: 0 0 3px #111;
+	}
+	div{
+		position: absolute;
+		width: 740px;
+		height: 500px;
+		text-align: center;
+		border-radius: 15px;
+		margin-top: -250px;
+		margin-left: -370px;
+		top:50%;
+		left: 50%;
+		box-shadow: 0 0 10px #666;
+		overflow: hidden;
+	}
+	ul{
+		position: absolute;
+		width: 5920px;
+		left: 0;
+		top: 0;
+		transition: 1s  cubic-bezier(.05,.16,.76,1);
+	}
+	li h3{
+		display: inline-block;
+		width: 70%;
+		padding: 30px 0;
+	}
+	li{	
+		float: left;
+		width: 740px;
+		background: #fff;
+		height: 500px;
+	}
+	span{
+		position: absolute;
+		display: block;
+		line-height: 50px;
+		width: 50px;
+		height: 50px;
+		margin-top: -25px;
+		top:50%;
+		cursor: pointer;
+		font-size: 2.5em;
+		transition: .3s;
+		color: #8fbc8f;
+		z-index: 10;
+	}
+	span#left{
+		left: 0;
+	}
+	span#left:hover{
+		left: -5px;
+		color:#3cb371;
+	}
+	span#right{
+		right: 0;
+	}
+	span#right:hover{
+		right: -5px;
+		color:#3cb371;
+	}
+	</style>
+</head>
+<body>
+	<div>
+		<span id="left"><i class="fa fa-arrow-left" ></i></span>
+		<span id="right"><i class="fa fa-arrow-right"></i></span>
+		<ul>
+			<li>
+				<h3>1.點擊左上角地球進入Ｍy network(類似ＦＢ會進入所有通知，也就是你剛剛line給我的兩張畫面的第一張畫面)</h3>
+				<img src="1.jpg" alt="">
+			</li>
+			<li>
+				<h3>2.點擊左上角三條槓會開啟左側資訊欄，collections就是你現在有參與的專案</h3>
+				<img src="2.jpg" alt="">
+			</li>
+			<li>
+				<h3>3.假設這是他人的頁面，點擊進入</br>他人的頁面。</h3>
+				<img src="3.jpg" alt="">
+			</li>
+			<li>
+				<h3>4.進入頁面後，點擊(標題：超實用專業...)旁的</br>星星圖案</h3>
+				<img src="4.jpg" alt="">
+			</li>
+			<li>
+				<h3>5.可以選擇訂閱（subscribe），或是成為團隊（team-up）。 *collection才可以選擇成為團隊</h3>
+				<img src="5.jpg" alt="">
+			</li>
+			<li>
+				<h3>6.如果已經是團隊的專案，應該會跳出這個視窗，選擇Ｇrow即可跳出上面那張圖的選擇視窗</h3>
+				<img src="6.jpg" alt="">
+			</li>
+			<li>
+				<h3>7.現在這是我得專案，點擊標題(ＳＳＳ)旁邊的兩個人的ＩＣＯＮ即可跳出想要邀請的人的list</h3>
+				<img src="7.jpg" alt="">
+			</li>
+			<li>
+				<h3>8.要是朋友才可以邀請成團隊。如果已經是團隊專案，一樣點選Grow即可</h3>
+				<img src="8.jpg" alt="">
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

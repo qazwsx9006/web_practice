@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script>
+	$(function(){
+
+		var liCount = $('#box ul li').length;
+		//製作按鈕
+		for(var i=0;i<liCount;i++){
+			$('#box').append("<div>"+i+"</div>");	
+		}
+		$('#box ul li').eq(0).css({"display":"block"});
+		//點擊按鈕換圖
+		$('#box>div').click(function(){
+			var nowIndex = $(this).index();
+			$('#box ul li').eq(nowIndex-1).fadeIn(2000).css({"z-index":"10"}).siblings('li').fadeOut(1000).css({"z-index":"9"});
+		});
+
+	})
+	</script>
+	<style>
+	*{margin:0;padding: 0;list-style: none;}
+	#box{
+		width:500px;
+		height: 420px;
+		margin: auto;
+	}
+	#box > ul{
+		width: 500px;
+		height: 400px;
+		margin: auto;
+		position: relative;
+		top:50px;
+	}
+	#box >ul >li{
+		width: 500px;
+		height: 400px;
+		overflow: hidden;
+		position: absolute;
+		outline: 1px solid #f00;
+		display: none;
+	}
+	#box >ul >li img{
+		position: relative;
+		top:-20px;
+		left:-20px;
+	}
+	#box>div{
+		width:20px;
+		height: 20px;
+		margin: auto;
+		position: relative;
+		display: inline-block;
+		z-index: 12;
+		background-color: #ff0;
+		cursor:pointer;
+	}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul>
+			<li><img src="img/image-1.jpg" alt="no" /></li>
+			<li><img src="img/maya1.jpg" alt="no" /></li>
+			<li><img src="img/maya4.jpg" alt="no" /></li>
+		</ul>
+	</div>
+</body>
+</html>

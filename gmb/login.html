@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>咬我啊!</title>
+	<link rel="stylesheet" href="assets/reset.css">
+	<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<style>
+	html,body{
+		height: 100%;
+		width: 100%;
+	}
+	.bg{
+		position: relative;
+		width: 100%;
+		height: 100%;
+		opacity: .4;
+	}
+	.bg li{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		margin: auto; 
+		overflow: hidden;
+	}
+	.bg li:nth-child(n+2){
+		display: none;
+	}
+	.bg li img{
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin:auto;
+		width: 125%;
+		height: 125%;
+	}
+	.bg li img.big{
+		-webkit-animation: toBig 8s linear infinite;
+	}
+	.bg li img.small{
+		-webkit-animation: toSmall 8s linear infinite;
+	}
+	.indexInfo{
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin:auto;
+		width: 80%;
+		height: 80%;
+		max-width: 600px;
+		max-height: 500px;
+		min-width: 300px;
+		min-height: 300px;
+		background: url("pic/bgapple.jpg") no-repeat -20px;
+		-moz-background-size:cover;
+		-webkit-background-size:cover;
+		-o-background-size:cover;
+		background-size:cover;
+		border-radius: 10px;
+		box-shadow: 0 0 15px rgba(0,0,0,.5);
+		text-align: center;
+		overflow: hidden;
+		font-family: 'Helvetica Neue','Helvetica','ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ','Meiryo','ＭＳ Ｐゴシック',arial,sans-serif;
+	}
+
+	.indexInfo h1{
+		position: relative;
+		background: #66CDAA;
+		padding: 20px;
+		font-size: 3.5em;
+		color: #fff;
+	}
+	.indexInfo h1:before,.indexInfo h1:after{
+		position: absolute;
+		content: '';
+		width: 0;
+		height: 0;
+		top: 100%;
+		border: 20px solid #000;
+		border-color: #66CDAA transparent transparent transparent; 
+		border-width: 30px 15px;
+		right:10%;
+	}
+	.indexInfo h1:after{
+		left:10%;
+	}
+	.indexInfo h2{
+		color: #fff;
+		font-size: 2.5em;
+		font-weight: bold;
+		letter-spacing: -1px;
+		padding: 10px;
+		margin-top: 10px;
+		text-shadow: 0 2px 6px rgba(0, 0, 0, 0.58);
+	}
+	.indexInfo p{
+		color: #fff;
+		font-size: 1.5em;
+		font-weight: 500;
+		text-shadow: 0 2px 6px rgba(0, 0, 0, 0.58);
+	}
+	.bottomTooth{
+		display: block;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		height: 30px;
+		width: 100%;
+		background: #66CDAA;
+	}
+	.bottomTooth:before,.bottomTooth:after{
+		position: absolute;
+		content: '';
+		width: 0;
+		height: 0;
+		bottom: 100%;
+		border: 20px solid #000;
+		border-color: transparent transparent #66CDAA transparent; 
+		border-width: 20px 10px;
+		right:25%;
+	}
+	.bottomTooth:after{
+		left: 25%;
+	}
+	.indexInfo form{
+		padding: 20px;
+	}
+	.inputBox {
+		display: inline-block;
+		width: 280px;
+		margin-bottom: 10px;
+	}
+	.indexInfo input[type="text"]{
+		display: block;
+		margin: 10px auto;
+		padding: 0 15px;
+		border-radius: 5px;
+		border: 0;
+		outline: 0;
+		box-shadow: 0 0 3px #666,0 0 0 1px #666;
+		width: 280px;
+		height: 40px;
+		max-width: 250px;
+	}
+	.indexInfo input:focus + label:before{
+		top: -70px;
+		font-size: 1.5em;
+		color: #4682b4;
+		font-weight: bold;
+		text-shadow: 0 2px 6px rgba(255, 255, 255, 0.58);
+		opacity: 1;
+	}
+	.indexInfo label{
+		display: block;
+		margin: 10px auto;
+		width: 90%;
+		position: relative;
+	}
+	.indexInfo label:before{
+		font-size: 1.2em;
+		position: absolute;
+		left: 0;
+		top: -35px;
+		content:  attr(data-tip);
+		display: block;
+		color: #666;
+		opacity: 0;
+		transition: .8s;
+	}
+	#submit{
+		display: none;
+	}
+	.indexInfo .submit{
+		cursor: pointer;
+		font-size: 2em;
+		margin-top: -5px;
+		display: inline-block;
+		width: 85px;
+		height: 85px;
+		line-height: 85px;
+		background: #66CDBB;
+		color: #fff;
+		border-radius: 50%;
+		box-shadow:0 0 0 5px #98CBCA, 0 0 10px #000;
+		border: 2px dashed #666;
+		opacity: .8;
+		margin-left: 70px;
+	}
+	.indexInfo .regist{
+		margin-left: 10px;
+		display: inline-block;
+		text-decoration: none;
+		background: #fff;
+		color:#000;
+		font-weight: 900;
+		width: 60px;
+		height: 60px;
+		line-height: 60px;
+		border-radius: 50%;
+		box-shadow:0 0 0 5px #dedede, 0 0 7px #000;
+		border: 1px dashed #999;
+		position: relative;
+		top:10px;
+	}
+
+	@-webkit-keyframes toBig {
+	    from {width: 100%;left:0;}
+	    to {width: 125%;left:-10%;}
+	}
+	@-webkit-keyframes toSmall {
+	    from {width: 125%;right:-10%;}
+	    to {width: 100%;right:0;}
+	}
+	</style>
+</head>
+<body>
+	<!--背景大圖-->
+	<ul class="bg">
+		<li><img class="big" src="pic/b1.jpg" alt=""></li>
+		<li><img src="pic/b2.jpg" alt=""></li>
+		<li><img src="pic/b3.jpg" alt=""></li>
+		<li><img src="pic/b4.jpg" alt=""></li>
+		<li><img src="pic/b5.jpg" alt=""></li>
+	</ul>
+	<!--首頁登入-->
+	<div class="indexInfo">
+		<h1>Give Me Bite</h1>
+		<h2>THE SLOGAN! OH YA 咬我啊!</h2>
+		<p>網站文案BLOG?作品文章收藏區?!分享?無名?</p>
+		<form action="">
+			<div class="inputBox">
+				<input type="text" id="account" placeholder="Account">
+				<label for="account"  data-tip="Account"></label>
+			</div>
+			<div class="inputBox">
+				<input type="text" id="password" placeholder="Password">
+				<label for="password" data-tip="Password"></label>
+			</div>
+			<br/>
+			<label for="submit" class="submit">登入</label>
+			<input type="submit" id="submit" value="登入">
+			<a class="regist" href="javascript:;">會員註冊</a>
+		</form>
+		<span class="bottomTooth"></span>
+	</div>
+	<footer></footer>
+
+	<script>
+	$(function(){
+		bgSlide();
+
+		$( "input" ).focus(function() {
+			$(this).attr('placeholder','');
+		});
+		$( "input" ).blur(function() {
+			var placeHolder = $(this).next().attr('data-tip');
+			$(this).attr('placeholder',placeHolder);
+		});
+	})
+	function bgSlide(){
+		var slideNum=$('.bg').children('li').length;
+		var i = 0;
+		var slider = setInterval(function(){goSlide(slideNum);},5000);
+
+		function goSlide(slideNum){
+
+			if(i==slideNum-1){
+				var before = i ;
+				var now = 0 ;
+				i=0;
+			}else{
+				var before = i ;
+				var now = i+1 ;
+				i++;
+			};
+			if(i%2==0){
+				$('.bg').children('li').eq(now).children('img').removeClass( "big small" ).addClass( "big" );
+			}else{
+				$('.bg').children('li').eq(now).children('img').removeClass( "big small" ).addClass( "small" );
+			}
+			$('.bg').children('li').eq(now).fadeIn(2500);
+			$('.bg').children('li').eq(before).fadeOut(2500);
+		}
+
+	}
+	</script>
+</body>
+</html>

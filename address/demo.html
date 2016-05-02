@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript"  charset="UTF-8">
+  $(function(){
+    var countryval,number,address;
+
+    $('#country').change(function(){
+      $('#city').html("");
+      countryval = $(this).val();
+      if(countryval==''){
+        $('#city').fadeOut(1);
+        return
+      };
+      if(countryval=='臺灣' || countryval=='美國'){
+        $('#road').html("");
+        $('#road').fadeOut(1);
+      };
+      $('#city').fadeIn(1);
+      var url=countryval+".txt";
+      $.post(url,function(data){
+        var citys = data.split(',');
+        for(i=0;i<citys.length;i++){
+          var opcity = citys[i].split('-');
+          var cont = "<option value=\""+opcity[1]+"\">"+opcity[0]+"</option>";
+          $('#city').append(cont);
+        }
+      })
+      switch(countryval){
+        case "臺灣":
+          number = "郵遞區號"
+          address = "通訊住址"
+          break;
+        case "日本":
+          number = "郵便番号"
+          address = "市區町村"
+          break;
+        case "美國":
+          number = "ZIP Code"
+          address = "address"
+          break;
+
+      }
+      $('#number').attr("placeholder",number);
+      $('#address').attr("placeholder",address);
+    });
+
+    $('#city').change(function(){
+      $('#road').html("");
+      if(countryval=='臺灣'){
+        return
+      };
+      var cityval = $(this).val();
+      if(cityval==''){
+        $('#road').fadeOut(1);
+        return
+      };
+      $('#road').fadeIn(1);
+      var url=cityval+".txt";
+      $.post(url,function(data){
+        var citys = data.split(',');
+        for(i=0;i<citys.length;i++){
+          var opcity = citys[i].split('-');
+          var cont = "<option value=\""+opcity[1]+"\">"+opcity[0]+"</option>";
+          $('#road').append(cont);
+        }
+      })
+    });
+
+  })
+  </script>
+  <style>
+  *{list-style: none;}
+  #addresslist>li{
+    float: left;
+  }
+  #city,#road{
+    display: none;
+  }
+  .clear{
+    clear: left;
+  }
+  </style>
+</head>
+<body >
+  <ul id="addresslist">
+    <li>
+      <select name="country" id="country">
+        <option value="">請選擇</option>
+        <option value="臺灣">臺灣</option>
+        <option value="日本">日本</option>
+        <option value="美國">美國</option>
+      </select>  
+    </li>
+    <li>
+      <select name="city" id="city">
+        
+      </select>
+    </li>
+    <li>
+      <select name="road" id="road">
+        
+      </select>
+    </li>
+    <li class="clear">
+      <input type="text" name="number" id="number" placeholder="">
+    </li>
+    <li>
+      <input type="text" name="address" id="address" placeholder="">
+    </li>
+  </ul>
+
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script>
+	$(function(){
+		var i;
+		for(i=0;i<20;i++){
+			$('#car').prepend('<div id="ani'+i+'"></div>');
+			$('#mouse').append('<li></li>');
+		};
+		var liWidth = 100/20;
+		$('#mouse>li').css({
+			"width":+liWidth+"%"
+		});
+
+		var a;
+		for(a=0;a<20;a++){
+			var pi = a*450;
+			$('#car > div').eq(a).css({
+				"background-position":" 0px -"+pi+"px"
+			});
+			var dis =a+1;
+			$('#car > div').eq(dis).css({
+				"display":"none"
+			});
+		};
+		// $('#mouse>li').click(function(){
+		// 	var a = $(this).index();
+		// 	alert(a);
+		// });
+		$('#mouse li').hover(function(){
+			var Ind = $(this).index();
+			$('#car>div').fadeOut(1);
+			$('#car>div').eq(Ind).fadeIn(1);
+		},function(){
+		});
+
+	})
+	</script>
+	<style>
+	*{margin: 0;padding: 0;list-style: none;}
+	#car{
+		width:750px;
+		height:450px;
+		position: relative;
+		outline: 1px solid #f00;
+		margin: auto;
+	}
+	#car>div{
+		width:750px;
+		height:450px;
+		position: absolute;
+		top:0;
+		left:0;
+		background-image: url(images/result.png);
+		background-repeat: no-repeat;
+		background-position: 0px 0px;
+	}
+	#mouse{
+		height:100%;
+		width:100%;
+		position: absolute;
+	}
+	#mouse li{
+		height:100%;
+		float: left;
+		cursor: pointer;
+	}
+	</style>
+</head>
+<body>
+<div id="car">
+	<ul id="mouse"></ul>
+</div>
+</body>
+</html>

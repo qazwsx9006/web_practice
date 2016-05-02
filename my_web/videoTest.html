@@ -1,0 +1,458 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>MYWeb</title>
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+
+<script>
+$(function(){
+	var hh = screen.height;	
+	var ww = screen.width;
+	$('.wrap').css({minWidth:ww*.67});
+	$('.wrap').css({height:(hh*.9)+5});
+	
+	if(hh>940){
+		$('.right .content .name').css({fontSize:'5em',top:'5%'});
+	}
+	if(hh<1000 & hh>810){
+		$('.right .content .videolist .videogallery .info').css({fontSize:'.9em'});
+	}
+	if(hh<809){
+		$('.right .content .videolist .videogallery .info').css({fontSize:'.8em'});
+	}
+	
+	
+	$('.right .content .videolist div').click(function(){
+		var videoIndex = $(this).index();
+		$('.right .MYyoutube').fadeIn();
+		$('.right .MYyoutube div').eq(videoIndex).fadeIn();
+	});
+	$('.right .MYyoutube, .right .MYyoutube div').click(function(){
+		$('.right .MYyoutube, .right .MYyoutube div').fadeOut();
+	});
+})
+
+</script>
+<style>
+/*大區塊*/
+body { padding:0; margin:0;}
+.wrap{
+	position:relative;
+	background-color:#fff;
+}
+.left{
+	width:25%;
+	height:100%;
+	position:absolute;
+	left:-15%;
+	transition:.6s
+}
+.left:hover{
+	left:0;
+}
+.left:hover ~ .right{
+	-webkit-transform-origin:70% center;
+	-webkit-transform:perspective(1000px) rotateY(-13deg);
+}
+.right{
+	width:95%;
+	height:100%;
+	position:absolute;
+	top:0;
+	right:0;
+	transition:.6s;
+	-webkit-transform-origin:70% center;
+	-webkit-transform:perspective(1000px) rotateY(0deg);
+}
+/*btn*/
+.right .btn{
+	width:100%;
+	height:60px;
+	background-color:#111;
+	text-align:center;
+	position:relative;
+}
+.right .btn:before{
+	content:"";
+	position:absolute;
+	top:0;
+	left:-60px;
+	border:30px solid #FFF;
+	border-color:transparent #111 transparent transparent;
+}
+.right .btn a{
+	margin-top:2px;
+	display:inline-block;
+	height:56px;
+	width:10%;
+	position:relative;
+}
+.right .btn a div{
+	position:absolute;
+	width:100%;
+	height:100%;
+	-webkit-transform-origin:center center -28px;
+	text-align:center;
+	line-height:56px;
+	font-size:24px;
+	font-family: "Arial Black", Gadget, sans-serif,'FontAwesome';
+}
+.right .btn a .aa{
+	background-color:#ffe;
+	-webkit-transform:perspective(600px) translateZ(-28px) rotateX(90deg);
+	transition:.3s cubic-bezier(.44,1.18,.77,1.22);
+	color:#210;
+}
+.right .btn a .bb{
+	
+	background-color:#111;
+	-webkit-backface-visibility:hidden;
+	-webkit-transform:perspective(600px) translateZ(-28px) rotateX(0deg);
+	transition:.3s cubic-bezier(.44,1.18,.77,1.22);
+	color:#FFF;
+	text-shadow:0 0 5px #FFF;
+}
+.right .btn a:hover .aa{
+	-webkit-transform:perspective(600px) translateZ(-28px) rotateX(0deg);	
+}
+.right .btn a:hover .bb{
+	-webkit-transform:perspective(600px) translateZ(-28px) rotateX(-91deg);	
+}
+/*主內容*/
+.right .content{
+	width:100%;
+	height:87.4%;
+	background-color:#933;
+	position:relative;
+}
+.right .content:before{
+	content:"";
+	position:absolute;
+	top:300px;
+	left:-30px;
+	border:15px solid #FFF;
+	border-color:transparent #933 transparent transparent;
+}
+.right .content:after{
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:30px;
+	content:"MENU";
+	position:absolute;
+	top:295px;
+	left:-77px;
+	-webkit-transform:rotate(-90deg);
+}
+/*頁腳*/
+.right .footer{
+	width:100%;
+	height:6.5%;
+	background-color:#944;
+}
+/*左欄位*/
+.left .menu{
+	font-family:Arial, Helvetica, sans-serif;
+	margin:0 auto;
+	width:80%;
+	height:80%;
+	background-color:#FFF;
+	position:absolute;
+	left:-20%;
+	transition:.6s;
+}
+.left:hover .menu{
+	left:8%;
+}
+.left .menu a{
+	text-decoration:none;
+	color:#111;
+	font-size:20px;
+	padding:5px;
+	display:block;
+	height:20px;
+	border-bottom:1px solid #ddd;
+	transition:.3s;
+}
+.left .menu h3{
+	font-size:40px;
+	line-height:160px;
+}
+.left .menu a:hover{
+	background-color:#ddd;
+}
+/*right_name*/
+.right .content .name{
+	font-family: "Courier New", Courier, monospace;
+	font-style:italic;
+	color:#FFF;
+	font-size:3em;
+	text-align:center;
+	line-height:150px;
+	cursor:default;
+	position:relative;
+	top:30px;
+	/*left:35%;
+	width:350px;*/
+	width:100%;
+	height:150px;
+	letter-spacing:-2px;
+}
+.right .content .name span{
+	display: inline-block;
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size:2em;
+	font-style:normal;
+	letter-spacing:5px;
+	-webkit-transform:perspective(600px) rotateY(0deg);
+}
+.right .content .name span:first-child{
+	transition:1.5s .1s;
+}
+.right .content .name span:last-child{
+	transition:1.5s .4s;
+}
+.right .content .name:hover span{
+	-webkit-transform:perspective(600px) rotateY(-360deg);
+}
+/*rightContentVideoList*/
+.right .content .videolist{
+	width:80%;
+	height:70%;
+	position:relative;
+	top:5%;
+	margin:auto;
+	padding:10px;
+}
+.right .content .videolist .videogallery{
+	width:44%;
+	height:30%;
+	margin:10px;
+	float:left;
+	overflow:hidden;
+	position:relative;
+	border:5px solid #fff;
+	border-radius:5px;
+	box-shadow:3px 3px 8px 0px rgba(0,0,0,.6);
+}
+.right .content .videolist .videogallery img{
+	width:100%;
+	position: absolute;
+	top:-40%;
+	-webkit-transform:scale(1.4,1.4);
+	-webkit-transform-origin:left center;
+	transition:-webkit-transform .3s, left .8s;	
+	display:block;
+}
+.right .content .videolist .videogallery:first-child img{
+	top:-100%;
+	left:-20%;
+}
+.right .content .videolist .videogallery:nth-child(2) img{
+	top:-30%;
+}
+.right .content .videolist .videogallery:nth-child(4) img{
+	top:-80%;
+	left:-10%;
+}
+.right .content .videolist .videogallery .info{
+	font-family:"微軟正黑體", "細明體", "新細明體", "標楷體","Arial Black", Gadget, sans-serif;
+	height:100%;
+	width:40%;
+	min-width:250px;
+	background-color:rgba(255,255,255,.8);
+	position:absolute;
+	top:0;
+	right:-1px;
+	padding:5px 20px;
+	-webkit-transform-origin:right center;
+	-webkit-transform:perspective(1000px) rotateY(-90deg);
+	transition:.8s;
+}
+.right .content .videolist .videogallery .info h3{
+	color:#a00;
+	text-align:center;
+	font-size:1.5em;
+	margin:5px auto;
+}
+.right .content .videolist .videogallery .info p{
+	color:#400;
+	font-size:1em;
+	margin:auto;
+	line-height:1.5em;
+	
+}
+.right .content .videolist .videogallery:hover img{
+	-webkit-transform:scale(1.2,1.2);	
+	left:-10%;
+}
+.right .content .videolist .videogallery:first-child:hover img{
+	-webkit-transform:scale(1.2,1.2);	
+	left:-30%;
+}
+.right .content .videolist .videogallery:nth-child(4):hover img{
+	-webkit-transform:scale(1.2,1.2);	
+	left:-20%;
+}
+.right .content .videolist .videogallery:hover .info{	
+	-webkit-transform:perspective(1000px) rotateY(0deg);
+}
+
+/*U2影片區*/
+.right .MYyoutube{
+	width:100%;
+	height:87.4%;
+	position: absolute;
+	background-color:rgba(51,51,51,.8);
+	top:60px;
+	left:0;
+	display:none;
+}
+.right .MYyoutube > div{
+	/*width:640px;
+	height:480px;*/
+	width:640px;
+	height:480px;
+	background-color:#CCC;
+	margin:10px;
+	border:10px solid #FFF;
+	position:absolute;
+	border-radius:10px;
+	left:0;
+	top:0;
+	bottom:0;
+	right:0;
+	margin:auto;
+	cursor:pointer;
+	display:none;
+}
+.right .MYyoutube > div:after{
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:1.2em;
+	text-align:center;
+	line-height:30px;
+	color:#FFF;
+	content:'X';
+	display:block;
+	width:30px;
+	height:30px;
+	background-color:#099;
+	border-radius:50%;
+	position:absolute;
+	top:-25px;
+	right:-25px;
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+	<div class="left">
+    	<div class="menu">
+        	<h3>MenuTitle</h3>
+            <a href="#">menu1</a>
+            <a href="#">menu2</a>
+            <a href="#">menu3</a>
+            <a href="#">menu4</a>
+            <a href="#">menu5</a>
+            <a href="#">menu6</a>
+            <a href="#">menu7</a>
+            <a href="#">menu8</a>
+            <a href="#">menu9</a>
+        </div>
+    </div>
+    <div class="right">
+        <div class="btn">
+            <a href="home2.html">
+                <div class="aa">Home</div>
+                <div class="bb fa-home"></div>
+            </a>
+            <a href="#">
+                <div class="aa">Btn</div>
+                <div class="bb fa-th-list"></div>
+            </a>
+            <a href="photo2.html">
+                <div class="aa">photo</div>
+                <div class="bb fa-picture-o"></div>
+            </a>
+            <a href="video2.html">
+                <div class="aa">Video</div>
+                <div class="bb fa-video-camera"></div>
+            </a>
+            <a href="#">
+                <div class="aa">About</div>
+                <div class="bb fa-user"></div>
+            </a>           
+        </div>
+        <div class="content">
+        	<div class="name"><span>M</span><span>Y</span>viedo</div>
+            <div class="videolist">
+            	<div class="videogallery">
+                	<a class="videobtn" href="#" title="臺師大圖傳系100級畢展[啊!葛瑞克]-宣傳片"><img src="images/video1.jpg" width="848" height="469" />
+                	<div class="info">
+                    	<h3>畢業展覽宣傳影片</h3>
+                        <p>畢業展覽作品是各組辛苦將近一年才完成的作品。過程非常艱辛。完成後也非常的有成就感。因此使用懷孕的概念表達出畢業專題的甜蜜負擔。</p>
+                    </div></a>
+                </div>
+                <div class="videogallery">
+                	<a class="videobtn" href="#" title="魔動王練習"><img src="images/video2.jpg" width="634" height="467" />
+                	<div class="info">
+                    	<h3>3D動畫-機器變形</h3>
+                        <p>在家自學MAYA時的練習作品。沒有使用到骨架，只用簡單基本的旋轉物件來完成的簡易動畫。</p>
+                    </div></a>
+                </div>
+                <div class="videogallery">
+                	<a class="videobtn" href="#" title="夢盒子第一部動畫作品-兔子"><img src="images/video3.jpg" width="713" height="467" />
+                	<div class="info">
+                    	<h3>畢業作品-兔子兄弟</h3>
+                        <p>由四個同學合力完成的動畫。雖然沒有上過MAYA的課程，但是秉持著一定可以的想法，跌跌撞撞的完成了動畫。負責:材質貼圖、環境燈光、小配件建模製作。</p>
+                    </div></a>
+                </div>
+                <div class="videogallery">
+                	<a class="videobtn" href="#" title="夢盒子第二部動畫作品-小鳥"><img src="images/video4.jpg" width="710" height="463" />
+                	<div class="info">
+                    	<h3>畢業作品-飛行學校</h3>
+                        <p>由四個同學合力完成的動畫。雖然沒有上過MAYA的課程，但是秉持著一定可以的想法，跌跌撞撞的完成了動畫。負責:劇本、材質貼圖、環境燈光、小配件建模製作。</p>
+                    </div></a>
+                </div>
+                <div class="videogallery">
+                	<a class="videobtn" href="#" title="Mayday五月天[步步Step by Step]MV官方高音質HD版-電視劇「步步驚情」主題曲"><img src="images/videotest.jpg" width="844" height="451" />
+                	<div class="info">
+                    	<h3>五月天-步步</h3>
+                        <p>這是影片說明這是影片說明這是影片說明這是影片說明這是影片說明這是影片說明這是影片說明這是影片說明</p>
+                    </div></a>
+                </div>
+                <div class="videogallery">
+                	<a class="videobtn" href="#" title="Mayday五月天[步步Step by Step]MV官方高音質HD版-電視劇「步步驚情」主題曲"><img src="images/videotest.jpg" width="844" height="451" />
+                	<div class="info">
+                    	<h3>五月天-步步</h3>
+                        <p>這是影片說明這是影片說明這是影片說明這是影片說明這是影片說明這是影片說明這是影片說明這是影片說明</p>
+                    </div></a>
+                </div>
+            </div>
+        </div>
+        <div class="MYyoutube">
+        	<div>
+            	<iframe width="640" height="480" src="http://www.youtube.com/embed/YLWmsJXTS8I?rel=0" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div>
+            	<iframe width="640" height="480" src="http://www.youtube.com/embed/wcKGnf3-GcY?rel=0" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div>
+            	<iframe width="640" height="480" src="http://www.youtube.com/embed/I203F3ywfkg?rel=0" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div>
+            	<iframe width="640" height="480" src="http://www.youtube.com/embed/y-Dcyi4qC10?rel=0" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div>
+            	<iframe width="640" height="480" src="http://www.youtube.com/embed/97axrS3Npxk?rel=0" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div>
+            	<iframe width="640" height="480" src="http://www.youtube.com/embed/97axrS3Npxk?rel=0" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="footer"></div> 
+	</div>
+</div>
+</body>
+</html>

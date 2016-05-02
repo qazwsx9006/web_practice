@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+			var screenh = screen.height; 
+			//alert(screenh);
+			$('#close').css({height:screenh*.9+5});
+		$('.pica').click(function(){
+			var picurl = $(this).clone();
+			$('#fake').html(picurl);
+
+			var picurlfirst = parseInt($('#fake').html().indexOf('href'));
+			var picurlend = parseInt($('#fake').html().indexOf('jpg'));
+			//alert(picurlfirst);
+			//alert(picurlend);
+			var picsrc = $('#fake').html().slice(picurlfirst+7,picurlend+3);
+			//alert(picsrc);
+			$('#fake').html('<img class="bigpic" src="'+picsrc+'">');
+			$('#close').fadeIn();
+			$('#fake').css({display:'block'}).animate({width:500,height:500});
+		});
+
+		$('#close').click(function(){
+			$('#close').fadeOut();
+			$('#fake').animate({width:0,height:0}).fadeOut(1);
+		}); 
+	})
+	</script>
+	<style type="text/css">
+	*{margin: 0; padding: 0;}
+	#wrap{
+		width:960px;
+		margin: auto;
+		background-color: #ddd;
+	}
+	#wrap > div{
+		float: left;
+	}
+	.smallpic{
+		width:100px;
+		height:100px;
+	}
+	.smallpic  img{
+		width: 100%;
+	}
+	#fake{
+		position: absolute;
+		left: 0;
+		right: 0;
+		top:0;
+		bottom: 0;
+		margin: auto;
+		border: 8px solid #eee;
+		border-radius: 5px;
+		box-shadow: 0 0 5px #111;
+		width: 5px;
+		height: 5px;
+		display: none;
+		z-index: 11;
+		background-color: #fff;
+	}
+	/*before不能用CLICK處發FUNCTION?*/
+/*	#fake:before{
+		font-family: "Arial Black", Gadget, sans-serif;
+		content: 'X';
+		display: block;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		background-color: #36f;
+		color:#fff;
+		font-size:1.6em;
+		text-align: center;
+		position: absolute;
+		top:-25px;
+		right: -25px;
+		cursor: pointer;
+	}*/
+	#fake .bigpic{
+		width: 100%;
+	}
+	#close{
+		background-color: rgba(150,150,150,.8);
+		width: 100%;
+		display:block;
+		position: absolute;
+		left: 0;
+		right:0;
+		display: none;
+		z-index: 10;
+	}
+	</style>
+</head>
+<body>
+
+<div id="fake"></div>
+<div id="close"></div>
+<div id="wrap">
+	<div class="smallpic"><a class="pica" href="#img/Koala.jpg"><img class="picurl" src="img/Koala.jpg" alt=""></a></div>
+	<div class="smallpic"><a class="pica" href="#img/Penguins.jpg">Penguins</a></div>
+</div>	
+</body>
+</html>

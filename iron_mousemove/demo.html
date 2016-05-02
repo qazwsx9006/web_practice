@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>滑鼠移動分解圖練習</title>
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<style>
+	*{margin:0;padding: 0;}
+	#picbody{
+		position: relative;
+		width:500px;
+		height: 233px;
+		margin-left: -250px;
+		left: 50%;
+		margin-top: 100px;
+	}
+	#picbody>div{
+		position: absolute;
+		top:0;
+		left: 0;
+	}
+	.iron1{
+		background: url("iron1.jpg") no-repeat 50% 100px fixed;
+		width: 100px;
+		height: 100px;
+		margin-left: -50px;
+		margin-top: -50px;
+		box-shadow: 0 0 0 2px #666;
+		display: none;
+	}
+	#contact{
+		width: 500px;
+		height: 233px;
+	}
+	</style>
+<body>
+<div id="wrap">
+	<div id="picbody">
+		<div id="iron2">
+			<img src="iron2.jpg" alt="">
+		</div>
+		<div class="iron1" id="showarea">
+		</div>
+		<div id="contact"></div>
+	</div>
+</div>
+<input type="text" id="x" />
+<input type="text" id="y">
+<script>
+$(function() {
+ 	
+ 	var picwidth = $('#picbody').width(),
+ 		picheight = $('#picbody').height(),
+ 		showarea = $('#showarea').width();
+
+ 	
+ 	$('#picbody').hover(function(){
+ 		$("#showarea").css({"display":"block"});
+ 	},function(){
+ 		$("#showarea").css({"display":"none"});
+ 	});
+ 
+ 
+  $("#contact").mousemove(function(e) {
+    $("#x").val(e.pageX - $("#contact").offset().left);
+    $("#y").val(e.pageY - $("#contact").offset().top);
+    var px = e.pageX - $("#contact").offset().left;
+    var py = e.pageY - $("#contact").offset().top;
+ 	if(px<=showarea/2){px=showarea/2};
+ 	if(px>=picwidth-showarea/2){px=picwidth-showarea/2};
+ 	if(py<=showarea/2){py=showarea/2};
+ 	if(py>=picheight-showarea/2){py=picheight-showarea/2};
+   	$("#showarea").css({"left":px,"top":py});
+  });
+
+
+});
+</script>	
+</body>
+</html>

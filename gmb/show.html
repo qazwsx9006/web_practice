@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>GiveMeBite - qazwsx9006</title>
+	<link rel="stylesheet" href="assets/reset.css">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?v=3&sensor=false"></script>
+	<style>
+	html,body{
+		background: #ededed;
+		font-family: 'Helvetica Neue','Helvetica','ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ','Meiryo','ＭＳ Ｐゴシック',arial,sans-serif,'FontAwesome';
+		position: relative;
+	}
+	header,footer{
+		width: 100%;
+		height: 50px;
+		background: #fefefe;
+		box-shadow: 0 0 10px #ccc;
+	}
+	header{
+		margin-bottom: 20px; 
+	}
+	header div{
+		width: 80%;
+		min-width: 440px;
+		height: 100%;
+		margin: 0 auto;
+		position: relative;
+	}
+	header a{
+		text-decoration: none;
+		color: #666;
+	}
+	header .logo{
+		display: inline-block;
+		height: 100%;
+		line-height: 50px;
+		padding: 0 10px;
+		font-size: 2.5em;
+	}
+	header nav{
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+	nav li{
+		display: inline-block;
+		line-height: 50px;
+		font-size: 1.5em;
+		padding: 0 10px;
+	}
+	section{
+		width: 80%;
+		min-width: 660px;
+		max-width: 960px;
+		margin: 0 auto;
+		position: relative;
+	}
+	section:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+	.sidebar{
+		display: inline-block;
+		width: 250px;
+	}
+	.sidebar div{
+		width: 100%;
+		box-shadow: 0 0 10px #ccc;
+	}
+	.sidebar > div{
+		margin-bottom: 10px;
+		background: #fff;
+	}
+	.user div{
+		height: 100px;
+		position: relative;
+		background: #fff;
+	}
+	.user div:last-child{
+		height: 80px;
+	}
+	.user > div:first-child{
+		overflow: hidden;
+	}
+	.user img{
+		width: 100%;
+		position: relative;
+	}
+	.avatar > img{
+		border-radius: 50%;
+	}
+	.user .avatar{
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+		position: absolute;
+		margin-top: -40px;
+		margin-left: -40px;
+		left: 50%;
+		box-shadow: 0 0 0 2px #fff, 0 0 10px #666;
+	}
+	.avatar:before{
+		content: attr(data-name);
+		position: absolute;
+		width: 100%;
+		top: 108%;
+		font-size: 2.5em;
+		text-align: center;
+		color: #888;
+	}
+	.avatar:after{
+		content: attr(data-talk);
+		position: absolute;
+		top: 145%;
+		left:-85px;
+		font-size: 1.5em;
+		width: 250px;
+		text-align: center;
+		color: #888;
+	}
+	.user .btn ul{
+		height: 100%;
+		text-align: justify;
+	}
+	.user .btn li{
+		display: inline-block;
+		height: 100%;
+		width: 32%;
+		text-align: center;
+		line-height: 70px;
+		font-size: 2.5em;
+		background: #fad8a8;
+		color: #cb923b;
+		position: relative;
+		cursor: pointer;
+	}
+	.user .btn li:nth-child(2){
+		background: #8cd1ce;
+		color: #0a7969;
+	}
+	.user .btn li:last-child{
+		width: 33%;
+		background: #9acaee;
+		color: #3a83b8;
+	}
+	.user .btn li i:after{
+		content: attr(data-num);
+		font-size: 0.7em;
+		position: absolute;
+		text-align: center;
+		width: 100%;
+		left: 0;
+		top: 65%;
+	}
+	.sidebar .post{}
+	.sidebar .post ul{
+		display: inline-block;
+	}
+	.sidebar .post ul li{
+		display: inline-block;
+		text-align: center;
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+		margin:2px 0 8px 0;
+		font-size: 1.5em;
+		position: relative;
+		color: #666;
+		cursor: pointer;
+	}
+	.sidebar .post ul li:nth-child(-n+2):after{
+		content: '';
+		display: block;
+		width: 1px;
+		height: 20px;
+		line-height: 20px;
+		background: #aaa;
+		position: absolute;
+		top: 5px;
+		right: 0;
+	}
+	.submitPencil{
+		float: right;
+		margin: 2px 20px 5px 0;
+		font-size: 1.5em;
+		color: #fff;
+		background: #fb7d66;
+		padding: 6px 8px;
+		cursor: pointer;
+		border-bottom: 2px solid #c2604e;
+		font-size: 1.75em;
+
+	}
+	.submitBtn{
+		display: none;
+	}
+	.post textarea{
+		border:none;
+		resize: none;
+		padding: 10px 0 0 10px;
+	}
+	.post .uploadimg{
+		width: 80px;
+		padding: 5px;
+		margin-left: 5px;
+		display: none;
+	}
+	.post .uploadimg img{
+		width: 100%;
+	}
+	.sidebar .think{
+		background: #f77460;
+		padding: 20px 20px 35px 20px;
+		box-sizing: border-box;
+		color:#fff;
+	}
+	.think p{
+		width: 100%;
+		margin-top: 5px;
+		font-size: 1.7em;
+		padding: 0 0 20px 0;
+		line-height: 1.2em;
+		border-bottom: 1px solid rgba(180,180,180,.5);
+		position: relative;
+	}
+	.think p:after{
+		content:'2014-09-29';
+		font-size: .3em;
+		position: absolute;
+		background: #c85d4f;
+		padding: 3px 5px;
+		color: #eee;
+		top: 105%;
+		right: 0;
+		border-radius: 20px;
+	}
+	
+	.content{
+		float: right;
+		width: 670px;
+	}
+	.content .mapBox{
+		height: 280px;
+		border: 8px solid #fff;
+		box-shadow: 0 2px 5px rgba(180,180,180,.5);
+		margin-bottom: 10px;
+	}
+	.content .mapBox #map-canvas{
+		width: 100%;
+		height: 100%;
+	}	
+	.content .favorite{
+		text-align: center;
+	}
+	.content .favorite .subheading{
+		width: 250px;
+		font-weight: 900;
+		color: #fff;
+		font-size: 1.8em;
+		position: relative;
+		height: 38px;
+	}
+	.content .favorite .subheading .setBtn{
+		display: inline-block;
+		width: 100%;
+		line-height: 38px;
+		background: #cb9f6e;
+		position: absolute;
+		left: 0;
+		z-index: 10;
+
+	}
+	.content .favorite .subheading ul{
+		position: absolute;
+		width: 135px;
+		background: #fff;
+		color: #aaa;
+		z-index: 1;
+		right: -25px;
+		bottom: 0;
+		text-align: left;
+		padding-left: 5px;
+		border-top: 1px solid #aaa;
+		border-right: 1px solid #aaa;
+		transition: .3s;
+	}
+	.content .favorite .subheading ul:focus{
+		right: -138px;
+	}
+	.content .favorite .subheading ul li{
+		display: inline-block;
+	}
+	.content .favorite .subheading ul li:last-child{
+		padding-left: 3px;
+		border-left: 1px dashed #ccc;
+	}
+	.content .favorite .subheading ul li input{
+		display: none;
+	}
+	.content .favorite .subheading ul li label{
+		padding: 5px 2px 3px 2px;
+		cursor: pointer;
+		transition: .3s;
+	}
+	.content .favorite .subheading ul li input:checked + label{
+		color: #87ceeb;
+		text-shadow: 0px 0px 5px #afeeee;
+	}
+
+	.content .favoriteList{
+		width: 100%;
+		margin-top: 10px;
+	}
+	.content .favoriteList:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+	.content .favoriteList li{
+		margin: 0 0 12px 15px;
+		position: relative;
+	}
+	.content .favoriteList li .bullhorn{
+		display: none;
+	}
+	.content .favoriteList.medium li{
+		float: left;
+		transition:.3s;
+	}
+	.content .favoriteList.medium li{
+		width: 190px;
+		padding: 5px;
+		height: 215px;
+		background: #fff;
+		border-radius: 5px;
+		box-shadow: 0 0 5px #aaa;
+		position: relative;
+	}
+	.content .favoriteList.medium li:before{
+		content: '';
+		display: block;
+		width: 16px;
+		height: 16px;
+		margin: 0 auto;
+		border-radius: 50%;
+		background: #e8e8e8;
+		box-shadow: inset 0px 0px 3px #999 ;
+	}
+	.content .favoriteList.medium li .imgShadow{
+		width: 190px;
+		height: 120px;
+		margin-top: 10px;
+	}
+	.content .favoriteList.medium li .imgShadow:before{
+		display: block;
+		content: '';
+		position: absolute;
+		width: 190px;
+		height: 120px;
+		box-shadow: inset 0 0 5px #999,inset 0 0 8px rgba(200,200,200,.4);
+		transition:.3s;
+	}
+	.content .favoriteList.medium li img{
+		width: 100%;
+		height: 100%;
+	}
+	.content .favoriteList.medium li p{
+		margin-top: 10px;
+		line-height: 1.4em;
+		text-align: justify;
+		font-weight: 800;
+		color: #666;
+	}
+	.content .favoriteList.medium li .postTime{
+		color: #aaa;
+		position: absolute;
+		bottom: 6px;
+		right: 8px;
+	}
+	.content .favoriteList.big{
+		text-align: center;
+	}
+	.content .favoriteList.big li{
+		width: 450px;
+		padding: 5px;
+		height: 400px;
+		background: #fff;
+		border-radius: 5px;
+		box-shadow: 0 0 5px #aaa;
+		position: relative;
+		display: inline-block;
+	}
+	.content .favoriteList.big li:before{
+		content: '';
+		display: block;
+		width: 16px;
+		height: 16px;
+		margin: 0 auto;
+		border-radius: 50%;
+		background: #e8e8e8;
+		box-shadow: inset 0px 0px 3px #999 ;
+	}
+	.content .favoriteList.big li .imgShadow{
+		width: 100%;
+		height: 270px;
+		margin-top: 10px;
+	}
+	.content .favoriteList.big li .imgShadow:before{
+		display: block;
+		content: '';
+		position: absolute;
+		width: 450px;
+		height: 270px;
+		box-shadow: inset 0 0 5px #999,inset 0 0 8px rgba(200,200,200,.4);
+	}
+	.content .favoriteList.big li img{
+		width: 100%;
+		height: 100%;
+	}
+	.content .favoriteList.big li p{
+		margin-top: 10px;
+		line-height: 1.6em;
+		text-align: justify;
+		font-weight: 800;
+		font-size: 2em;
+		padding: 0 10px;
+		color: #666;
+	}
+	.content .favoriteList.big li .postTime{
+		color: #aaa;
+		position: absolute;
+		font-size: 1.6em;
+		bottom: 10px;
+		right: 15px;
+	}
+
+
+	.content .favoriteList.small{
+		text-align: left;
+	}
+	
+	.content .favoriteList.small li{
+		width: 100px;
+		padding: 5px ;
+		background: #fff;
+		border-radius: 5px;
+		box-shadow: 0 0 5px #aaa;
+		position: relative;
+		display: inline-block;
+		transition:.3s;
+	}
+	.content .favoriteList.small li:before{
+		content: '';
+		display: block;
+		width: 12px;
+		height: 12px;
+		margin: 0 auto;
+		border-radius: 50%;
+		background: #e8e8e8;
+		box-shadow: inset 0px 0px 3px #999 ;
+	}
+	.content .favoriteList.small li .imgShadow{
+		width: 100%;
+		height: 80px;
+		margin-top: 5px;
+	}
+	.content .favoriteList.small li .imgShadow:before{
+		display: block;
+		content: '';
+		position: absolute;
+		width: 100px;
+		height: 80px;
+		box-shadow: inset 0 0 5px #999,inset 0 0 8px rgba(200,200,200,.4);
+		transition: .3s;
+	}
+	.content .favoriteList.small li img{
+		width: 100%;
+		height: 100%;
+	}
+	.content .favoriteList.small li p{
+		display: none;
+	}
+	.content .favoriteList.small li .postTime{
+		color: #aaa;
+		font-size: 1em;
+		margin-top: 5px;
+	}
+
+	.content .favoriteList.detail li{
+		width: 100%;
+		display: block; 
+		text-align: left;
+		margin:0 0 5px 0; 
+		padding: 10px;
+		box-sizing: border-box;
+		background: #fff;
+		box-shadow: 0 0 5px #aaa;
+		position: relative;
+		border-radius: 5px;
+		transition: .3s;
+	}
+	.content .favoriteList.detail li .bullhorn{
+		display: inline-block;
+		margin-right: 5px;
+		color: #708090;
+	}
+	.content .favoriteList.detail li .imgShadow{
+		display: none;
+		transition: .3s;
+	}
+	.content .favoriteList.detail li p{
+		display: inline-block;
+	}
+	.content .favoriteList.detail li .postTime{
+		float: right;
+	}
+	footer{
+		text-align: center;
+		margin-top: 20px;
+		padding: 20px 0 0 0 ;
+	}
+	footer p {
+		margin-top: 10px;
+	}
+	footer li{
+		display: inline-block;
+	}
+	</style>
+	<script>
+		var map;
+		var markers = [];
+		var inicenter;
+
+		var locationStr='媽，我在這!(･∀･)っ'
+		var askbounds;
+		var mapTimeOut;
+		function initialize() {
+
+			if (navigator.geolocation) {
+		        var a = navigator.geolocation.getCurrentPosition(showPosition,wrong,{timeout:8000});
+		    } else {
+		        showPosition({ coords: { latitude: 25.047924, longitude: 121.517081 } });//如果不支援geolocation,定位台北市火車站
+		        locationStr='臺北火車站';
+		    }
+
+		    function wrong(error) {
+		        locationStr='臺北火車站';
+		        showPosition({ coords: { latitude: 25.047924, longitude: 121.517081 } });
+		        switch (error.code) {
+		            case error.TIMEOUT:
+		                alert('呃...頭上剛好有片烏雲飄過，造成衛星定位不準。\n將採系統預設位置顯示。');
+		                break;
+
+		            case error.POSITION_UNAVAILABLE:
+		                if(sessionStorage && sessionStorage.MAP_POSITION_UNAVAILABLE==1){
+		                	console.log('MAP_POSITION_UNAVAILABLE');
+						}else{
+						  	sessionStorage.MAP_POSITION_UNAVAILABLE=1;
+		                	alert('無法取得定位');
+						}
+		                break;
+
+		            case error.PERMISSION_DENIED://拒絕
+		                if(sessionStorage && sessionStorage.PERMISSION_DENIED==1){
+		                	console.log('PERMISSION_DENIED');
+						}else{
+						  	sessionStorage.PERMISSION_DENIED=1;
+		                	alert('為了提供更好的服務，\n請允許定位功能喔!');
+						}
+		                break;
+
+		            case error.UNKNOWN_ERROR:
+		                alert('不明的錯誤，請稍候再試');
+		                break;
+		        }
+		    }
+		    function showPosition(position){
+		    	var inilat = position.coords.latitude;
+	        	var inilnt = position.coords.longitude;
+
+	        	inicenter = new google.maps.LatLng(inilat, inilnt);
+		        var mapOptions = {
+    				zoom: 12,
+		            center: inicenter,
+					panControl: true,
+					panControlOptions: {
+				  		position: google.maps.ControlPosition.RIGHT_CENTER
+					},
+					zoomControl: true,
+					zoomControlOptions: {
+						style: google.maps.ZoomControlStyle.DEFAULT,
+						position: google.maps.ControlPosition.RIGHT_CENTER
+					},
+					streetViewControl: true,
+					scaleControl:true
+		        };
+		        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		        var marker = new google.maps.Marker({
+		            position: inicenter,
+		            map: map
+		        });
+		        var infowindow = new google.maps.InfoWindow({
+			        content: "<div style=\"width:130px;padding:5px 0;text-align:center;\">"+locationStr+"</div>"
+			    });
+			    google.maps.event.addListener(marker, 'mouseover', function() {
+			        infowindow.open(map, this);
+			    });
+			    google.maps.event.addListener(marker, 'mouseout', function() {
+			        infowindow.close(map, this);
+			    });
+		    }
+		}
+		google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+</head>
+<body>
+	<header>
+		<div>
+			<a class="logo" href="javascript:;">GiveMeBite!</a>
+			<nav>
+				<ul>
+					<li><a href="javascript:;">首頁</a></li>
+					<li><a href="javascript:;">註冊</a></li>
+					<li><a href="javascript:;">登入</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<section>
+		<div class="sidebar">
+			<div class="user">
+				<div><img src="pic/bgapple.jpg" alt="" style="top:-20px;"></div>
+				<div>
+					<div class="avatar" data-name="MingYu" data-talk="就是愛吃甜點">
+						<img src="pic/111.jpg" alt="">
+					</div>
+				</div>
+				<div class="btn">
+					<ul>
+						<li><i class="fa fa-heart" data-num="100"></i></li>
+						<li><i class="fa fa-users" data-num="130"></i></li>
+						<li><i class="fa fa-eye" data-num="210"></i></li>
+					</ul>
+				</div>
+			</div>
+			<div class="post">
+				<form action="">
+					<textarea name="" id="" cols="30" rows="5" placeholder="分享些好吃的美食吧!"></textarea>
+					<div>
+						<div class="uploadimg"><img src="pic/sweets1.jpg" alt=""></div>
+						<ul>
+							<li><i class="fa fa-map-marker"></i></li>
+							<li><i class="fa fa-camera-retro" style="padding:0 2px 0 0;"></i></li>
+							<li><i class="fa fa-tags"></i></li>
+						</ul>
+						<label for="submitBtn" class="fa fa-pencil submitPencil"></label>
+						<input class="submitBtn" id="submitBtn" type="submit" value="分享">
+					</div>
+				</form>
+			</div>
+			<div class="think">
+				<i class="fa fa-quote-left"></i>
+				<p>
+					sssssssss<br/>
+					aaaaaaaaaaaaaaaaaaaaa  sss a adsa asa sdadas dsa!<br/>
+				</p>
+			</div>
+		</div>
+		<div class="content">
+			<div class="mapBox">
+				<div id="map-canvas" class="map-canvas"  onselectstart="return false;"></div>
+			</div>
+			<div class="favorite">
+				<div class="subheading">
+					<ul tabindex="1">
+						<li>
+							<input type="radio" name="subBtn" id="subBtn1" value="big" checked>
+							<label  class="fa fa-square" for="subBtn1"></label>
+						</li>
+						<li>
+							<input type="radio" name="subBtn" id="subBtn2" value="medium">
+							<label  class="fa fa-th-large" for="subBtn2"></label>
+						</li>
+						<li>
+							<input type="radio" name="subBtn" id="subBtn3" value="small">
+							<label  class="fa fa-th" for="subBtn3"></label>
+						</li>
+						<li>
+							<input type="radio" name="subBtn" id="subBtn4" value="detail">
+							<label  class="fa fa-list-ul" for="subBtn4"></label>
+						</li>
+						<li>
+							<label  class="fa fa-cog" for="subBtn5"></label>
+						</li>
+					</ul>
+					<div class="setBtn">
+						<i class="fa fa-heart"></i>&nbsp;&nbsp;&nbsp;My Favorite
+					</div>
+				</div>
+				<ul class="favoriteList big">
+					<li>
+						<div class="imgShadow"><img src="pic/sweets1.jpg" alt=""></div>
+						<p><i class="bullhorn fa fa-bullhorn"></i>
+							好吃下午茶蛋糕!!大推 :)
+						</p>
+						<span class="postTime fa fa-comments-o">&nbsp;&nbsp;2014-10-05</span>
+					</li>
+					<li>
+						<div class="imgShadow"><img src="pic/sweets1.jpg" alt=""></div>
+						<p><i class="bullhorn fa fa-bullhorn"></i>
+							好吃下午茶蛋糕!!大推 :)好吃下午茶蛋糕!!大推 :)
+						</p>
+						<span class="postTime fa fa-comments-o">&nbsp;&nbsp;2014-10-05</span>
+					</li>
+					<li>
+						<div class="imgShadow"><img src="pic/sweets1.jpg" alt=""></div>
+						<p><i class="bullhorn fa fa-bullhorn"></i>
+							好吃下午茶蛋糕!!大推 :)好吃下午茶蛋糕!!大推 :)好吃下午茶蛋糕!!大推 :)
+						</p>
+						<span class="postTime fa fa-comments-o">&nbsp;&nbsp;2014-10-05</span>
+					</li>
+					<li>
+						<div class="imgShadow"><img src="pic/sweets1.jpg" alt=""></div>
+						<p><i class="bullhorn fa fa-bullhorn"></i>
+							好吃下午茶蛋糕!!大推 :)好吃下午茶蛋糕!!大推 :)好吃下午茶蛋糕!!...
+						</p>
+						<span class="postTime fa fa-comments-o">&nbsp;&nbsp;2014-10-05</span>
+					</li>
+					<li>
+						<div class="imgShadow"><img src="pic/sweets1.jpg" alt=""></div>
+						<p><i class="bullhorn fa fa-bullhorn"></i>
+							好吃下午茶蛋糕!!大推 :)好吃下午茶蛋糕!!大推 :)好吃下午茶蛋糕!!大推 :)...
+						</p>
+						<span class="postTime fa fa-comments-o">&nbsp;&nbsp;2014-10-05</span>
+					</li>
+					<li>
+						<div class="imgShadow"><img src="pic/sweets1.jpg" alt=""></div>
+						<p><i class="bullhorn fa fa-bullhorn"></i>
+							好吃下午茶蛋糕!!大推 :)好吃下午茶蛋糕!!大推 :)好吃下午茶蛋糕!!大推 :)好吃下午茶蛋糕!!...
+						</p>
+						<span class="postTime fa fa-comments-o">&nbsp;&nbsp;2014-10-05</span>
+					</li>
+					<li>
+						<div class="imgShadow"><img src="pic/sweets1.jpg" alt=""></div>
+						<p><i class="bullhorn fa fa-bullhorn"></i>
+							好吃下午茶蛋糕!!大推 :)好吃下午茶蛋糕!!大推 :)好吃下午茶蛋糕!!大推 :)好吃下午茶蛋糕...
+						</p>
+						<span class="postTime fa fa-comments-o">&nbsp;&nbsp;2014-10-05</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<ul>
+			<li><a href="javascript:;">關於網站</a></li>
+			<li><a href="javascript:;">免責聲明</a></li>
+			<li><a href="javascript:;">隱私政策</a></li>
+			<li><a href="javascript:;">使用條款</a></li>
+		</ul>
+		<p>© 2014 GiveMeBite Powered by GiveMeBite</p>
+	</footer>
+	<script>
+	$(function(){
+		 contentWidth();
+	      $(window).resize(function(){
+	        contentWidth();
+	      });
+
+	    function contentWidth(){
+	    	var w = $('section').width();
+	    	var vatContentW = w-290;
+	    	if(vatContentW>390){
+	        	$('.content').width(vatContentW);
+	    	}else{
+	    		$('.content').width(390);
+	    	};
+	     };
+	     $( 'input[name="subBtn"]:radio' ).change(function(){
+	     	var listStyle = $(this).val();
+	     	$('.favoriteList').removeClass().addClass('favoriteList').addClass(listStyle);
+	     });
+	})
+	</script>
+</body>
+</html>

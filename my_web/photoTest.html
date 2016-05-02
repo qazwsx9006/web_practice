@@ -1,0 +1,841 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>MYWeb</title>
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+<script src="js/lightbox-2.6.min.js"></script>
+<link href="css/lightbox.css" rel="stylesheet" />
+<script>
+$(function(){
+	var hh = screen.height;	
+	var ww = screen.width;
+	$('.wrap').css({minWidth:ww*.67});
+	$('.wrap').css({height:(hh*.9)+5});
+	
+	if( hh < 810 ){
+		$('.right .content .picbox').css({top:0});
+		$('.right .content .picbtn').css({top:'5%'});
+	}else{
+		$('.right .content .picbox').css({top:'10%'});
+		$('.right .content .picbtn').css({top:'15%'});
+	};
+	if(hh>940){
+		$('.right .content .name').css({fontSize:'5em'});
+	}
+	
+	$('.right .content .picbtn a span:first').addClass('fa-dot-circle-o');
+	
+	$('.right .content .picbtn a span').click(function(){
+		var xx = $(this).index();
+		$('.right .content .picbox .bigpic').css({left:'-'+xx*100+'%'})
+		$('.right .content .picbtn a span').removeClass('fa-dot-circle-o');
+		$('.right .content .picbtn a span').eq(xx).addClass('fa-dot-circle-o');
+	});
+})
+
+</script>
+<style>
+/*大區塊*/
+body { padding:0; margin:0;}
+.wrap{
+	position:relative;
+	background-color:#fff;
+}
+.left{
+	width:25%;
+	height:100%;
+	position:absolute;
+	left:-15%;
+	transition:.6s
+}
+.left:hover{
+	left:0;
+}
+.left:hover ~ .right{
+	-webkit-transform-origin:70% center;
+	-webkit-transform:perspective(1000px) rotateY(-13deg);
+}
+.right{
+	width:95%;
+	height:100%;
+	position:absolute;
+	top:0;
+	right:0;
+	opacity:1;
+	transition:.6s;
+	-webkit-transform-origin:70% center;
+	-webkit-transform:perspective(1000px) rotateY(0deg);
+}
+/*btn*/
+.right .btn{
+	width:100%;
+	height:60px;
+	background-color:#111;
+	text-align:center;
+	position:relative;
+	z-index:10;
+}
+.right .btn:before{
+	content:"";
+	position:absolute;
+	top:0;
+	left:-60px;
+	border:30px solid #FFF;
+	border-color:transparent #111 transparent transparent;
+}
+.right .btn a{
+	margin-top:2px;
+	display:inline-block;
+	height:56px;
+	width:10%;
+	position:relative;
+}
+.right .btn a div{
+	position:absolute;
+	width:100%;
+	height:100%;
+	-webkit-transform-origin:center center -28px;
+	text-align:center;
+	line-height:56px;
+	font-size:24px;
+	font-family: "Arial Black", Gadget, sans-serif,'FontAwesome';
+}
+.right .btn a .aa{
+	background-color:#ffe;
+	-webkit-transform:perspective(600px) translateZ(-28px) rotateX(90deg);
+	transition:.3s cubic-bezier(.44,1.18,.77,1.22);
+	color:#210;
+}
+.right .btn a .bb{
+	
+	background-color:#111;
+	-webkit-backface-visibility:hidden;
+	-webkit-transform:perspective(600px) translateZ(-28px) rotateX(0deg);
+	transition:.3s cubic-bezier(.44,1.18,.77,1.22);
+	color:#FFF;
+	text-shadow:0 0 5px #FFF;
+}
+.right .btn a:hover .aa{
+	-webkit-transform:perspective(600px) translateZ(-28px) rotateX(0deg);	
+}
+.right .btn a:hover .bb{
+	-webkit-transform:perspective(600px) translateZ(-28px) rotateX(-91deg);	
+}
+/*主內容*/
+.right .content{
+	width:100%;
+	height:87.4%;
+	background-color:#933;
+	position:relative;
+}
+.right .content:before{
+	content:"";
+	position:absolute;
+	top:300px;
+	left:-30px;
+	border:15px solid #FFF;
+	border-color:transparent #933 transparent transparent;
+}
+.right .content:after{
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:30px;
+	content:"MENU";
+	position:absolute;
+	top:295px;
+	left:-77px;
+	-webkit-transform:rotate(-90deg);
+}
+/*頁腳*/
+.right .footer{
+	width:100%;
+	height:6.5%;
+	background-color:#944;
+}
+/*左欄位*/
+.left .menu{
+	font-family:Arial, Helvetica, sans-serif;
+	margin:0 auto;
+	width:80%;
+	height:80%;
+	background-color:#FFF;
+	position:absolute;
+	left:-20%;
+	transition:.6s;
+}
+.left:hover .menu{
+	left:8%;
+}
+.left .menu a{
+	text-decoration:none;
+	color:#111;
+	font-size:20px;
+	padding:5px;
+	display:block;
+	height:20px;
+	border-bottom:1px solid #ddd;
+	transition:.3s;
+}
+.left .menu h3{
+	font-size:40px;
+	line-height:160px;
+}
+.left .menu a:hover{
+	background-color:#ddd;
+}
+/*rightName*/
+.right .content .name{
+	font-family: "Courier New", Courier, monospace;
+	font-style:italic;
+	color:#FFF;
+	font-size:3em;
+	text-align:center;
+	line-height:150px;
+	background-color:#ddd;
+	cursor:default;
+	/*position:absolute;
+	top:0px;
+	left:35%;
+	width:350px;*/
+	width:100%;
+	height:150px;
+	letter-spacing:-2px;
+}
+.right .content .name span{
+	display: inline-block;
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size:2em;
+	font-style:normal;
+	letter-spacing:5px;
+	-webkit-transform:perspective(600px) rotateY(0deg);
+}
+.right .content .name span:first-child{
+	transition:1.5s .1s;
+}
+.right .content .name span:last-child{
+	transition:1.5s .4s;
+}
+.right .content .name:hover span{
+	-webkit-transform:perspective(600px) rotateY(-360deg);
+}
+/*rightPic*/
+.right .content .pic{
+	position:absolute;
+	top:0;
+	left:0;
+	width:800px;
+	height:390px;
+	/*box-shadow:0 0 0px #999;*/
+}
+.right .content .pic div{
+	float:left;
+	width:25%;
+	height:33.33%;
+	position:relative;
+	transition:1s;
+}
+.right .content .pic div:hover{
+	z-index:2;
+	transition:0s;
+}
+.right .content .pic div .info{
+	font-family:"微軟正黑體", "細明體", "新細明體", "標楷體", 'FontAwesome';
+	position:absolute;
+	left:100%;
+	top:0;
+	width:0;
+	height:100%;
+	overflow:hidden;
+	background-color:rgba(255,255,255,1);
+	transition:.5s .1s;
+}
+.right .content .pic div:nth-child(2n) .info{
+	left:0%;
+}
+.right .content .pic div:nth-child(2n):hover .info{
+	left:-100%;
+}
+.right .content .pic div:hover .info{
+	width:100%;	
+}
+
+.right .content .pic div .info h3{
+	font-size:1.5em;
+	text-align:center;
+	display:block;
+	width:200px;
+	margin:5px 0;
+	color:#733;
+}
+.right .content .pic div .info p{
+	font-size:.9em;
+	line-height:1.5em;
+	display:block;
+	width:190px;
+	margin:5px 10px 0;
+	color:#555;
+}
+.right .content .pic div .info a{
+	display:block;
+	width:80px;
+	text-align:right;
+	text-decoration:none;
+	margin:0 0 5px 100px;
+	color:#400;
+	position:relative;
+}
+.right .content .pic div .info a span{
+	color:#211;
+	letter-spacing:6px;
+	position:absolute;
+	top:0;
+	left:7px;
+}
+.right .content .pic div .info a:hover span{
+	-webkit-animation:picjump .8s infinite;
+}
+
+@-webkit-keyframes picjump{
+	0%{top:0;}
+	50%{top:-10px;}
+	100%{top:0px;}
+}
+/*slide效果設定*/
+.right .content .picbox{
+	position:relative;
+	left:0;
+	right:0;
+	bottom:0;
+	margin:auto;
+	width:800px;
+	height:390px;
+	box-shadow:0 0 8px #999;
+	overflow:hidden;
+}
+.right .content .picbox .bigpic{
+	position:absolute;
+	top:0;
+	left:0;
+	width:800px;
+	height:390px;
+	transition:1s;
+}
+.right .content .pic:nth-child(2){
+	left:100%;
+}
+.right .content .pic:nth-child(3){
+	left:200%;
+}
+.right .content .pic:nth-child(4){
+	left:300%;
+}
+.right .content .pic:nth-child(5){
+	left:400%;
+}
+.right .content .picbtn{
+	text-align:center;
+	width:100%;
+	position:relative;
+	letter-spacing:10px;
+	cursor:default;
+}
+.right .content .picbtn a{
+	font-size:.5em;
+	color:#F99;
+	font-family:'FontAwesome';
+	text-decoration:none;
+	text-shadow:0 0 1px #FFF;
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+	<div class="left">
+    	<div class="menu">
+        	<h3>MenuTitle</h3>
+            <a href="#">menu1</a>
+            <a href="#">menu2</a>
+            <a href="#">menu3</a>
+            <a href="#">menu4</a>
+            <a href="#">menu5</a>
+            <a href="#">menu6</a>
+            <a href="#">menu7</a>
+            <a href="#">menu8</a>
+            <a href="#">menu9</a>
+        </div>
+    </div>
+    <div class="right">
+        <div class="btn">
+            <a href="home2.html">
+                <div class="aa">Home</div>
+                <div class="bb fa-home"></div>
+            </a>
+            <a href="#">
+                <div class="aa">Btn</div>
+                <div class="bb fa-th-list"></div>
+            </a>
+            <a href="photo2.html">
+                <div class="aa">photo</div>
+                <div class="bb fa-picture-o"></div>
+            </a>
+            <a href="#">
+                <div class="aa">Video</div>
+                <div class="bb fa-video-camera"></div>
+            </a>
+            <a href="#">
+                <div class="aa">About</div>
+                <div class="bb fa-user"></div>
+            </a>           
+        </div>
+        <div class="content">
+       		<div class="name"><span>M</span><span>Y</span>photo</div>
+        	<div class="picbox">
+            	<div class="bigpic">
+                    <div class="pic">
+                        <div><img src="images/pic12.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>CoachPotato</h3>
+                                <p>PS合成作品。人們都成為CoachPatota，漸漸忘記思考。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-1" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div></div>
+                        <div><img src="images/pic11.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>YellowDuck</h3>
+                                <p>趁著黃色小鴨到基隆，雖然天氣寒冷還是跑去湊個熱鬧，感受小鴨的魔力。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-1" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                             </div>
+                         </div>
+                        <div><img src="images/pic10.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>環島記錄</h3>
+                                <p>2012年趁著入伍前的空檔，決定了為期一個星期的摩托車環島。&lt;圖為墾丁&gt;</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-1" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                             </div>
+                         </div>
+                        <div><img src="images/pic9.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>環島記錄</h3>
+                                <p>2012年趁著入伍前的空檔，決定了為期一個星期的摩托車環島。&lt;圖為多良車站&gt;</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-1" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                             </div>
+                         </div>
+                        <div><img src="images/pic8.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>環島記錄</h3>
+                                <p>2012年趁著入伍前的空檔，決定了為期一個星期的摩托車環島。&lt;圖為東海岸&gt;</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-1" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                             </div>
+                         </div>
+                        <div><img src="images/pic7.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>環島記錄</h3>
+                                <p>2012年趁著入伍前的空檔，決定了為期一個星期的摩托車環島。&lt;圖為清水斷崖&gt;</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-1" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                             </div>
+                         </div>
+                        <div><img src="images/pic6.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>哥吉拉誕生</h3>
+                                <p>小時候就特愛哥吉拉系列的日本怪獸電影。慶幸的是2014又要上映了。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-1" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                             </div>
+                         </div>
+                        <div><img src="images/pic5.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>邀請卡</h3>
+                                <p>在資策會上課的作業之一。以指尖藝術為概念，設計出UI/UX課程的邀請卡。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-1" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                             </div>
+                         </div>
+                        <div><img src="images/pic4.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>MAYA龍丸號</h3>
+                                <p>覺得3D很有趣，在空閒的時候，跟著網路教學自學。目前則因上課關係，暫時停擺。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-1" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                             </div>
+                         </div>
+                        <div><img src="images/pic3.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>MAYA魔動火王</h3>
+                                <p>覺得3D很有趣，在空閒的時候，跟著網路教學自學。目前則因上課關係，暫時停擺。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-1" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                             </div>
+                         </div>
+                        <div><img src="images/pic2.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>MAYA無敵鐵金剛</h3>
+                                <p>覺得3D很有趣，在空閒的時候，跟著網路教學自學。目前則因上課關係，暫時停擺。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-1" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                             </div>
+                         </div>
+                        <div><img src="images/pic1.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>MAYA小小兵</h3>
+                                <p>覺得3D很有趣，在空閒的時候，跟著網路教學自學。目前則因上課關係，暫時停擺。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-1" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                             </div>
+                        </div>
+                    </div>
+                    <div class="pic">
+                        <div><img src="images/test1.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-2" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test1.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-2" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test1.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-2" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test1.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-2" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test1.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-2" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test1.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-2" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test1.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-2" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test1.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-2" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test1.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-2" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test1.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-2" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test1.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-2" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test1.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-2" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pic">
+                        <div><img src="images/test2.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-3" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test2.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-3" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test2.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-3" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test2.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-3" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test2.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-3" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test2.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-3" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test2.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-3" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test2.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-3" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test2.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-3" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test2.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-3" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test2.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-3" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test2.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-3" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pic">
+                        <div><img src="images/test3.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-5" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test3.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-5" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test3.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-5" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test3.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-5" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test3.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-5" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test3.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-5" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test3.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-5" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test3.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-5" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test3.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-5" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test3.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-5" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test3.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-5" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test3.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-5" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pic">
+                        <div><img src="images/test4.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-4" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test4.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-4" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test4.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-4" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test4.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-4" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test4.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-4" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test4.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-4" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test4.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-4" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test4.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-4" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test4.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-4" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test4.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-4" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test4.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-4" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                        <div><img src="images/test4.jpg" width="200" height="130" />
+                            <div class="info">
+                                <h3>TestPic</h3>
+                                <p>這裡是圖片的說明文字框。這裡是圖片的說明文字框。</p>
+                                <a href="images/image-1.jpg" data-lightbox="image-4" title="My caption"><span class="fa-camera"></span>看大圖</a>
+                            </div>
+                        </div>
+                    </div>
+            	</div>
+            </div>
+            <div class="picbtn">
+            	<a href="javascript:;">
+                	<span class="fa-circle-o"></span>
+                	<span class="fa-circle-o"></span>
+                	<span class="fa-circle-o"></span>
+                	<span class="fa-circle-o"></span>
+                	<span class="fa-circle-o"></span>
+                </a>
+            </div>
+        </div>
+        <div class="footer"></div> 
+	</div>
+</div>
+</body>
+</html>

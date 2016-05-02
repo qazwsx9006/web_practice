@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{margin: 0;padding: 0;list-style: none;}
+	body{
+		background: #555;
+	}
+	.computer {
+	  margin-left: -100px;
+	  margin-top: -100px;
+	  top: 50%;
+	  left: 50%;
+	  width: 200px;
+	  height: 200px;
+	  position: absolute;
+	  -webkit-transform-style: preserve-3d;
+	  -webkit-perspective:8000px;
+	  -webkit-transform: rotateX(-0deg) rotateY(120deg) rotateZ(0deg) translateZ( -10px );
+	  -webkit-animation: mymove 10s infinite linear;
+	}
+
+	#bottom {
+	  width: 100%;
+	  height: 100%;
+	  position: absolute;
+	  -webkit-transform-style: preserve-3d;
+	  -webkit-transform: scaleY(.05);
+	}
+	#top {
+	  width: 100%;
+	  height: 100%;
+	  position: absolute;
+	  -webkit-transform-style: preserve-3d;
+	  -webkit-transform: scaleZ(.05)  translate3d(0px,-100px,-2000px);
+	}
+
+	#bottom figure,#top figure {
+	  width: 200px;
+	  height: 200px;
+	  display: block;
+	  position: absolute;
+	}
+	#bottom .front  ,#top .front  { -webkit-transform: rotateY(   0deg ) translateZ( 100px ); }
+	#bottom .back   ,#top .back   { -webkit-transform: rotateX( 180deg ) translateZ( 100px ); }
+	#bottom .right  ,#top .right  { -webkit-transform: rotateY(  90deg ) translateZ( 100px ); }
+	#bottom .left   ,#top .left   { -webkit-transform: rotateY( -90deg ) translateZ( 100px ); }
+	#bottom .top    ,#top .top    { -webkit-transform: rotateX(  90deg ) translateZ( 100px ); }
+	#bottom .bottom ,#top .bottom { -webkit-transform: rotateX( -90deg ) translateZ( 100px ); }
+	
+	#bottom .back, #bottom .right, #bottom .left{
+		background: #777}
+	}
+	#bottom .top{
+		background: #f00;
+	}
+	#bottom .front{
+		background: #eee;
+	}
+	#bottom .bottom{
+		background: #333;
+	}
+	
+	#top .back{
+		background: #777;
+	}
+	#top .front {
+		-webkit-transform: rotateZ(0deg) rotateY(0deg);
+		background: #252525 url('http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2013/03/google_nobar.png') center;
+		background-size: 180px 180px;
+   		background-repeat: no-repeat;
+	}
+	#top .right, #top .left ,#top .top{
+		background: #999;
+	}
+	#top .bottom{
+		background: #656565;
+	}
+	#bottom .top {
+		display: block;
+		width: 100%;
+		height: 100%;
+		background: #252525 url('123.png') center;
+		background-size: 195px 200px;
+   		background-repeat: no-repeat;
+    	background-attachment: fixed;
+	}
+	#top strong{
+		color: #fff;
+		-webkit-transform: rotateZ(180deg);
+		display: inline-block;
+		width: 100%;
+		text-align: center;
+		line-height: 200px;
+		text-shadow: 0 0 3px #fff;
+	}
+
+	@-webkit-keyframes mymove {
+	    0% {-webkit-transform: rotateX(10deg) rotateY(120deg) rotateZ(0deg);}
+	    50% {-webkit-transform: rotateX(0deg) rotateY(-120deg) rotateZ(40deg);}
+	    100% {-webkit-transform: rotateX(10deg) rotateY(-240deg) rotateZ(0deg);}
+	}
+
+	</style>
+</head>
+<body>
+	<section class="computer">
+	  <div id="top">
+	    <figure class="front"></figure>
+	    <figure class="back"><strong>Tseng</strong></figure>
+	    <figure class="right"></figure>
+	    <figure class="left"></figure>
+	    <figure class="top"></figure>
+	    <figure class="bottom"></figure>
+	  </div>
+	  <div id="bottom">
+	    <figure class="front"></figure>
+	    <figure class="back"></figure>
+	    <figure class="right"></figure>
+	    <figure class="left"></figure>
+	    <figure class="top"></figure>
+	    <figure class="bottom"></figure>
+	  </div>
+	</section>
+</body>
+</html>

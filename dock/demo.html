@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style>
+*{ margin:0; padding:0; list-style:none;}
+.dock{
+	height:48px;
+	text-align:center;
+	border:1px solid #F00;
+	margin:50px;
+}
+ul{
+	text-align:center;
+	border:1px solid #0F0;
+	letter-spacing:-4px;
+	position:relative;
+}
+li:nth-child(-n+6){
+	border:1px solid #00F;
+	width:48px;
+	height:48px;
+	display:inline-block;	
+	z-index:1;
+	position:relative;
+	margin-top:20px;
+	transition:.3s;
+}
+li:nth-child(-n+6) a{
+	display:block;
+	width:100%;
+	height:100%;
+}
+li:nth-child(-n+6):hover{
+	width:68px;
+	height:68px;
+	margin-top:0px;
+}
+li:last-child{
+	width:100%;
+	height:48px;
+	position:absolute;
+	top:50px;
+	left:0px;
+	z-index:0;
+	top:0;
+}
+li:last-child img{
+	transition:.3s;
+	margin-top:20px;}
+li:nth-child(1):hover ~ li:nth-child(7) img:nth-child(1),
+li:nth-child(2):hover ~ li:nth-child(7) img:nth-child(2),
+li:nth-child(3):hover ~ li:nth-child(7) img:nth-child(3),
+li:nth-child(4):hover ~ li:nth-child(7) img:nth-child(4),
+li:nth-child(5):hover ~ li:nth-child(7) img:nth-child(5),
+li:nth-child(6):hover ~ li:nth-child(7) img:nth-child(6){
+	width:68px;
+	height:68px;
+	position:relative;
+	top:-10px;
+	margin-top:0;
+}
+li:nth-child(1):hover ~ li:nth-child(7) img:nth-child(2),
+li:nth-child(6):hover ~ li:nth-child(7) img:nth-child(5),
+li:nth-child(2):hover ~ li:nth-child(7) img:nth-child(1),
+li:nth-child(2):hover ~ li:nth-child(7) img:nth-child(3),
+li:nth-child(3):hover ~ li:nth-child(7) img:nth-child(2),
+li:nth-child(3):hover ~ li:nth-child(7) img:nth-child(4),
+li:nth-child(4):hover ~ li:nth-child(7) img:nth-child(3),
+li:nth-child(4):hover ~ li:nth-child(7) img:nth-child(5),
+li:nth-child(5):hover ~ li:nth-child(7) img:nth-child(4),
+li:nth-child(5):hover ~ li:nth-child(7) img:nth-child(6){
+	width:58px;
+	height:58px;
+	position:relative;
+	top:-5px;
+	margin-top:10px;
+}
+
+
+</style>
+</head>
+
+<body>
+<div class="dock">
+	<ul>
+    	<li><a href="#"></a></li>
+    	<li><a href="#"></a></li>
+    	<li><a href="#"></a></li>
+    	<li><a href="#"></a></li>
+    	<li><a href="#"></a></li>
+    	<li><a href="#"></a></li>
+    	<li>
+        <img src="images/ArzoIconsIcon722.png" width="48" height="48" />
+        <img src="images/ArzoIconsIcon722.png" width="48" height="48" />
+        <img src="images/ArzoIconsIcon722.png" width="48" height="48" />
+        <img src="images/ArzoIconsIcon722.png" width="48" height="48" />
+        <img src="images/ArzoIconsIcon722.png" width="48" height="48" />
+        <img src="images/ArzoIconsIcon722.png" width="48" height="48" />
+        </li>
+    </ul>
+</div>
+</body>
+</html>

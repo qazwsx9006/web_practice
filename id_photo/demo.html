@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>Make_ID_Photo</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="assets/tmy.js"></script>
+	<link rel="stylesheet" href="assets/reset.css">
+	<link rel="stylesheet" href="assets/tmy.css">
+	<script>
+	$(function(){
+		$('#DL').click(function(){
+			$('#header').removeClass();
+			$('#header').addClass('part3');
+		});
+		dropUpload();
+		clickload();
+	})
+	</script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-52133868-1', 'dropboxusercontent.com');
+	  ga('send', 'pageview');
+
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<div id="header">
+			<h2>Easy!Cheap!ID Photo!</h2>
+		</div>
+		<div id="content">
+			<div id='updiv'>
+				<span>click to upload pic or drop pic to here!</span>
+			</div>
+			<input type="file" name="file" size="20" id='filebtn' style="display:none;" onchange='picload(this);'>
+		</div>
+		<div id="footer">
+			<span>copyright &copy; mingyu 2014</span>
+		</div>
+		<div id="photo">
+			<canvas id="myCanvas"></canvas>
+			<a id="DL" download="dl.png" href="#">下載</a>
+		</div>
+		<div id="flash"></div>
+	</div>
+</body>
+</html>

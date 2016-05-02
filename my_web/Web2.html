@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>MYWeb</title>
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+<script>
+$(function(){
+	var hh = $(window).height();
+	$('.wrap, .left, .right').css({height:hh});
+})
+
+</script>
+<style>
+/*大區塊*/
+body { padding:0; margin:0;}
+.wrap{
+	min-width:768px;
+	position:relative;
+	background-color:#111;
+}
+.left{
+	width:25%;
+	position:absolute;
+	left:-15%;
+	transition:.6s
+}
+.left:hover{
+	left:0;
+}
+.left:hover ~ .right{
+	-webkit-transform-origin:70% center;
+	-webkit-transform:perspective(1000px) rotateY(-13deg);
+}
+.right{
+	width:95%;
+	position:absolute;
+	top:0;
+	right:0;
+	opacity:1;
+	transition:.6s;
+	-webkit-transform-origin:70% center;
+	-webkit-transform:perspective(1000px) rotateY(0deg);
+}
+/*btn*/
+.right .btn{
+	width:100%;
+	height:60px;
+	background-color:#111;
+	text-align:center;
+	position:relative;
+}
+.right .btn:before{
+	content:"";
+	position:absolute;
+	top:0;
+	left:-60px;
+	border:30px solid #FFF;
+	border-color:transparent #111 transparent transparent;
+}
+.right .btn a{
+	margin-top:2px;
+	display:inline-block;
+	height:56px;
+	width:10%;
+	position:relative;
+}
+.right .btn a div{
+	position:absolute;
+	width:100%;
+	height:100%;
+	-webkit-transform-origin:center center -28px;
+	text-align:center;
+	line-height:56px;
+	font-size:24px;
+	font-family: "Arial Black", Gadget, sans-serif,'FontAwesome';
+}
+.right .btn a .aa{
+	background-color:#ffe;
+	-webkit-transform:perspective(600px) translateZ(-28px) rotateX(90deg);
+	transition:.3s cubic-bezier(.44,1.18,.77,1.22);
+	color:#210;
+}
+.right .btn a .bb{
+	
+	background-color:#111;
+	-webkit-backface-visibility:hidden;
+	-webkit-transform:perspective(600px) translateZ(-28px) rotateX(0deg);
+	transition:.3s cubic-bezier(.44,1.18,.77,1.22);
+	color:#FFF;
+	text-shadow:0 0 5px #FFF;
+}
+.right .btn a:hover .aa{
+	-webkit-transform:perspective(600px) translateZ(-28px) rotateX(0deg);	
+}
+.right .btn a:hover .bb{
+	-webkit-transform:perspective(600px) translateZ(-28px) rotateX(-91deg);	
+}
+/*主內容*/
+.right .content{
+	width:100%;
+	height:87%;
+	background-color:#933;
+	position:relative;
+}
+.right .content:before{
+	content:"";
+	position:absolute;
+	top:300px;
+	left:-30px;
+	border:15px solid #FFF;
+	border-color:transparent #933 transparent transparent;
+}
+.right .content:after{
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:30px;
+	content:"MENU";
+	position:absolute;
+	top:295px;
+	left:-77px;
+	-webkit-transform:rotate(-90deg);
+}
+/*頁腳*/
+.right .footer{
+	width:100%;
+	height:25px;
+	background-color:#944;
+}
+/*左欄位*/
+.left .menu{
+	font-family:Arial, Helvetica, sans-serif;
+	margin:-40px auto 0 auto;
+	width:80%;
+	height:80%;
+	background-color:#FFF;
+	position:absolute;
+	left:-20%;
+	transition:.6s;
+}
+.left:hover .menu{
+	left:8%;
+}
+.left .menu a{
+	text-decoration:none;
+	color:#111;
+	font-size:20px;
+	padding:5px;
+	display:block;
+	height:20px;
+	border-bottom:1px solid #ddd;
+	transition:.3s;
+}
+.left .menu h3{
+	font-size:40px;
+	line-height:160px;
+}
+.left .menu a:hover{
+	background-color:#ddd;
+}
+/*rightcontent*/
+.right .content .lcontent{
+	width:60%;
+	height:585px;
+	position:relative;
+}
+/*歸零,不然會撐壞*/
+.right .content .lcontent h3, p{
+	display:block;
+	margin:0;
+}
+.right .content .lcontent h3{
+	text-align:right;
+	color:#fff;
+	font-size:9em;
+	font-family: "Comic Sans MS", cursive;
+	position:absolute;
+	right:0;
+	top:160px;
+	width:100%;
+}
+.right .content .lcontent p{
+	text-align:right;
+	width:340px;
+	color:#eee;
+	font-size:1em;
+	position:absolute;
+	right:0;
+	top:340px;
+	font-family:"微軟正黑體", "細明體", "新細明體", "標楷體,"Comic Sans MS", cursive";
+}
+.right .content .rcontent{
+	width:350px;
+	height:350px;
+	position:absolute;
+	right:5%;
+	top:120px;
+}
+.right .content .rcontent:hover{
+	-webkit-transform-origin:center 70%;
+	-webkit-animation:pokaro .8s infinite linear;
+}
+.right .content .rcontent .poka1{
+	width:300px;
+	height:150px;
+	background-color:#F00;
+	border-radius:160px 160px 0 0;
+	border:10px solid #ccc;
+	border-bottom-width:0px;
+	position:relative;
+	z-index:2;
+}
+.right .content .rcontent .poka1:before{
+	content:"";
+	display:block;
+	width:80px;
+	height:80px;
+	background-color:#eee;
+	border-radius:50%;
+	border:10px solid #222;
+	position:absolute;
+	top:110px;
+	left:100px;;
+}
+.right .content .rcontent .poka1:after{
+	content:"";
+	display:block;
+	width:50px;
+	height:50px;
+	background-color:#eee;
+	border-radius:50%;
+	border:5px solid #444;
+	position:absolute;
+	top:130px;
+	left:120px;;
+}
+.right .content .rcontent .poka2{
+	margin-top:20px;
+	width:300px;
+	height:150px;
+	background-color:#fff;
+	border-radius:0 0 160px 160px;
+	border:10px solid #ccc;
+	border-top-width:0px;
+	position:relative;
+}
+.right .content .rcontent .poka2:before{
+	content:"";
+	display:block;
+	width:280px;
+	height:30px;
+	background-color:#111;
+	position:absolute;
+	top:-30px;
+	left:10px;
+}
+@-webkit-keyframes pokaro{
+	0%{-webkit-transform:rotate(0deg);}
+	25%{-webkit-transform:rotate(-30deg);}
+	75%{-webkit-transform:rotate(30deg);}
+	100%{-webkit-transform:rotate(0deg);}
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+	<div class="left">
+    	<div class="menu">
+        	<h3>MenuTitle</h3>
+            <a href="#">menu1</a>
+            <a href="#">menu2</a>
+            <a href="#">menu3</a>
+            <a href="#">menu4</a>
+            <a href="#">menu5</a>
+            <a href="#">menu6</a>
+            <a href="#">menu7</a>
+            <a href="#">menu8</a>
+            <a href="#">menu9</a>
+        </div>
+    </div>
+    <div class="right">
+        <div class="btn">
+            <a href="#">
+                <div class="aa">Home</div>
+                <div class="bb fa-home"></div>
+            </a>
+            <a href="#">
+                <div class="aa">Btn</div>
+                <div class="bb fa-th-list"></div>
+            </a>
+            <a href="#">
+                <div class="aa">photo</div>
+                <div class="bb fa-picture-o"></div>
+            </a>
+            <a href="#">
+                <div class="aa">Video</div>
+                <div class="bb fa-video-camera"></div>
+            </a>
+            <a href="#">
+                <div class="aa">About</div>
+                <div class="bb fa-user"></div>
+            </a>           
+        </div>
+        <div class="content">
+        	<div class="lcontent">
+            	<h3>Welcome</h3>
+                <p>歡迎光臨MingYu的MYWeb，此為練習網站，不做任何商業利益。歡迎一起討論技術。</br>請使用chrome或safari以取得最佳瀏覽效果。</p>
+            </div>
+            <div class="rcontent">
+            		<div class="poka1"></div>
+            		<div class="poka2"></div>
+            </div>
+        </div>
+        <div class="footer"></div> 
+	</div>
+</div>
+</body>
+</html>

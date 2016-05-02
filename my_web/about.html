@@ -1,0 +1,461 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>MYWeb</title>
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+<script>
+$(function(){
+	var hh = screen.height;	
+	var ww = screen.width;
+	$('.wrap').css({minWidth:ww*.67});
+	$('.wrap').css({height:(hh*.9)+5});
+	
+	if(hh<1000){
+		$('.right .content .myinfo > div > div:nth-child(n+2)').css({fontSize:'1.2em',height:'35px'});
+		$('.right .content .top .talk p:first').css({fontSize:'2em'});
+		$('.right .content .top .talk p:nth-child(2)').css({fontSize:'1.5em'});
+		$('.right .content .top .talk p:last').css({fontSize:'1em',marginTop:'10px'});
+	};	
+})
+
+</script>
+<style>
+/*大區塊*/
+body { padding:0; margin:0;}
+.wrap{
+	position:relative;
+	background-color:#fff;
+}
+.left{
+	width:25%;
+	height:100%;
+	position:absolute;
+	left:-15%;
+	transition:.6s;
+}
+.left:hover{
+	left:0;
+}
+.left:hover ~ .right{
+	-webkit-transform-origin:70% center;
+	-webkit-transform:perspective(1000px) rotateY(-13deg);
+}
+.right{
+	width:95%;
+	height:100%;
+	position:absolute;
+	top:0;
+	right:0;
+	transition:.6s;
+	-webkit-transform-origin:70% center;
+	-webkit-transform:perspective(1000px) rotateY(0deg);
+}
+/*btn*/
+.right .btn{
+	width:100%;
+	height:60px;
+	background-color:#111;
+	text-align:center;
+	position:relative;
+}
+.right .btn:before{
+	content:"";
+	position:absolute;
+	top:0;
+	left:-60px;
+	border:30px solid #FFF;
+	border-color:transparent #111 transparent transparent;
+}
+.right .btn a{
+	margin-top:2px;
+	display:inline-block;
+	height:56px;
+	width:10%;
+	position:relative;
+}
+.right .btn a div{
+	position:absolute;
+	width:100%;
+	height:100%;
+	-webkit-transform-origin:center center -28px;
+	text-align:center;
+	line-height:56px;
+	font-size:24px;
+	font-family: "Arial Black", Gadget, sans-serif,'FontAwesome';
+}
+.right .btn a .aa{
+	background-color:#ffe;
+	-webkit-transform:perspective(600px) translateZ(-28px) rotateX(90deg);
+	transition:.3s cubic-bezier(.44,1.18,.77,1.22);
+	color:#210;
+}
+.right .btn a .bb{
+	
+	background-color:#111;
+	-webkit-backface-visibility:hidden;
+	-webkit-transform:perspective(600px) translateZ(-28px) rotateX(0deg);
+	transition:.3s cubic-bezier(.44,1.18,.77,1.22);
+	color:#FFF;
+	text-shadow:0 0 5px #FFF;
+}
+.right .btn a:hover .aa{
+	-webkit-transform:perspective(600px) translateZ(-28px) rotateX(0deg);	
+}
+.right .btn a:hover .bb{
+	-webkit-transform:perspective(600px) translateZ(-28px) rotateX(-91deg);	
+}
+/*主內容*/
+.right .content{
+	width:100%;
+	height:87.4%;
+	background-color:#933;
+	position:relative;
+}
+.right .content:before{
+	content:"";
+	position:absolute;
+	top:300px;
+	left:-30px;
+	border:15px solid #FFF;
+	border-color:transparent #933 transparent transparent;
+}
+.right .content:after{
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:30px;
+	content:"MENU";
+	position:absolute;
+	top:295px;
+	left:-77px;
+	-webkit-transform:rotate(-90deg);
+}
+/*頁腳*/
+.right .footer{
+	width:100%;
+	height:6.5%;
+	background-color:#944;
+}
+/*左欄位*/
+.left .menu{
+	font-family:Arial, Helvetica, sans-serif;
+	margin:0 auto;
+	width:80%;
+	height:80%;
+	background-color:#FFF;
+	position:absolute;
+	left:-20%;
+	transition:.6s;
+}
+.left:hover .menu{
+	left:8%;
+}
+.left .menu a{
+	text-decoration:none;
+	color:#111;
+	font-size:20px;
+	padding:5px;
+	display:block;
+	height:20px;
+	border-bottom:1px solid #ddd;
+	transition:.3s;
+}
+.left .menu h3{
+	font-size:40px;
+	line-height:160px;
+}
+.left .menu a:hover{
+	background-color:#ddd;
+}
+/*rightcontentTop*/
+.right .content .top{
+	width:70%;
+	height:33.3%;
+	position:absolute;
+	top:3%;
+	left:0;
+	right:0;
+	margin:auto;
+	z-index:10;
+}
+.right .content .top div:first-child{
+	height:100%;
+	width:25%;
+	border-radius:10px;
+	border:5px solid #fff;
+	overflow:hidden;
+	position:relative;
+	box-shadow:1px 1px 5px 1px #000;
+}
+.right .content .top div:first-child span{
+	display:block;
+	height:100%;
+	width:100%;
+	border-radius:10px;
+	border:5px solid #fff;
+	background-color:#933;
+	position:relative;
+	left:-2%;
+	top:-2%;
+	box-shadow:1px 1px 5px 1px #000;
+	transition:1.5s;
+}
+.right .content .top div:first-child:hover span{
+	left:-110%;
+}
+.right .content .top div:first-child img{
+	width:100%;
+	position:absolute;
+	bottom:-10%;
+}
+.right .content .top .talk{
+	width:0%;
+	height:80%;
+	position:absolute;
+	top:10%;
+	left:30%;
+	border:5px solid #fff;
+	border-radius:10px;
+	background-color:rgba(0,204,255,1);
+	box-shadow:1px 1px 6px 1px #000;
+	transition:1s;
+	opacity:0;
+}
+.right .content .top div:first-child:hover ~ .talk{
+	width:60%;
+	opacity:1;
+}
+.right .content .top .talk:after{
+	content:'';
+	display:block;
+	width:0;
+	height:0;
+	border:20px solid #000;
+	border-color:transparent rgba(0,204,255,1) transparent transparent;
+	border-width:15px 25px;
+	position:absolute;
+	left:-50px;
+	top:40%;
+}
+.right .content .top .talk:before{
+	content:'';
+	display:block;
+	width:0;
+	height:0;
+	border:20px solid #000;
+	border-color:transparent #fff transparent transparent;
+	border-width:22px 30px;
+	position:absolute;
+	left:-60px;
+	top:37%;
+}
+.right .content .top .talk p{
+	font-family:"Arial Black", Gadget, sans-serif;
+	margin:10px 30px;
+	opacity:0;
+	transition:.3s;
+	
+}
+.right .content .top div:first-child:hover ~ .talk p{
+	opacity:1;
+	transition:.5s .5s;
+}
+.right .content .top .talk p:first-child{
+	color:#fff;
+	font-size:2.5em;
+}
+.right .content .top .talk p:nth-child(2){
+	color:#eee;
+	font-size:1.5em;
+	text-align:center;
+	margin-top:30px;
+}
+.right .content .top .talk p:last-child{
+	color:#ddd;
+	font-size:1.4em;
+	text-align:right;
+	margin-top:30px;
+}
+/*myinfo*/
+.right .content .myinfo{
+	font-family:"Arial Black", Gadget, sans-serif,'FontAwesome';
+	width:70%;
+	height:62%;
+	bottom:0;
+	position:absolute;
+	bottom:0;
+	left:0;
+	right:0;
+	margin:auto;
+}
+.right .content .myinfo > div{
+	width:30%;
+	height:100%;
+	margin:0 1%;
+	float:left;
+}
+.right .content .myinfo > div > div:first-child{
+	text-align:center;
+	width:100%;
+	height:15%;
+	color:#fff;
+	text-shadow:1px	1px 0 #ddd,
+				2px	2px 0 #bbb,
+				3px	3px 0 #aaa,
+				4px	4px 0 #999,
+				5px	5px 0 #666,
+				6px	6px 1px #444;
+	font-size:2.5em;
+	cursor:default;
+}
+.right .content .myinfo > div > div:nth-child(n+2){
+	color:#FFF;
+	text-align:center;
+	font-size:1.3em;
+	margin:10px;
+	border-bottom:1px solid #944;
+	height:60px;
+	line-height:2.6em;
+	cursor:pointer;
+	transition:.3s;
+	color:#422;
+}
+.right .content .myinfo > div > div:nth-child(n+2):hover{
+	color:#0CF;
+	text-shadow:0 0 4px #0cf, 0 0 5px rgba(255,255,255,.6);
+}
+.right .content .myinfo > div > div:nth-child(n+2) span{
+	font-size:.8em;
+	opacity:0;
+	transition:.5s;
+}
+.right .content .myinfo > div > div:nth-child(n+2) span:first-child{
+	margin-left:10px;
+}
+.right .content .myinfo .skill div:nth-child(n+2){
+	text-align:left;
+	text-indent:25%;
+}
+.right .content .myinfo > div > div:nth-child(n+2):hover span:first-child{
+	opacity:1;
+	transition:opacity .3s;	
+}
+.right .content .myinfo > div > div:nth-child(n+2):hover span:nth-child(2){
+	opacity:1;
+	transition:opacity .3s .3s;	
+}
+.right .content .myinfo > div > div:nth-child(n+2):hover span:nth-child(3){
+	opacity:1;
+	transition:opacity .3s .6s;	
+}
+.right .content .myinfo > div > div:nth-child(n+2):hover span:nth-child(4){
+	opacity:1;
+	transition:opacity .3s .9s;	
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+	<div class="left">
+    	<div class="menu">
+        	<h3>Templates</h3>
+            <a href="http://dl.dropboxusercontent.com/u/227563841/jarallax_my/index.html">Jarallax_MYWeb</a>
+            <a href="#">menu2</a>
+            <a href="#">menu3</a>
+            <a href="#">menu4</a>
+            <a href="#">menu5</a>
+            <a href="#">menu6</a>
+            <a href="#">menu7</a>
+            <a href="#">menu8</a>
+            <a href="#">menu9</a>
+        </div>
+    </div>
+    <div class="right">
+        <div class="btn">
+            <a href="index.html">
+                <div class="aa">Home</div>
+                <div class="bb fa-home"></div>
+            </a>
+            <a href="news.html">
+                <div class="aa">News</div>
+                <div class="bb fa-th-list"></div>
+            </a>
+            <a href="photo.html">
+                <div class="aa">photo</div>
+                <div class="bb fa-picture-o"></div>
+            </a>
+            <a href="video.html">
+                <div class="aa">Video</div>
+                <div class="bb fa-video-camera"></div>
+            </a>
+            <a href="about.html">
+                <div class="aa">About</div>
+                <div class="bb fa-user"></div>
+            </a>           
+        </div>
+        <div class="content">
+        	<div class="top">
+            	<div><img src="images/me.jpg" /><span></span></div>
+                <div class="talk">
+                	<p>Hello!I'm MingYuTseng。</p>
+                    <p>This page is about Who am I。</p>
+                    <p>enjoy youself!</p>
+                </div>
+            </div>
+            <div class="myinfo">
+            	<div class="me">                
+                    <div>AboutMe</div>
+	                <div class="fa-github-alt">&nbsp;MingYuTseng</div>
+	                <div class="fa-male">&nbsp;Male</div>
+	                <div class="fa-map-marker">&nbsp;TaiwanTaipei</div>
+	                <div class="fa-envelope">&nbsp;qazwsx9006@hotmail.com</div>
+                    <div class="fa-building-o">&nbsp;NationTaiwanNormalUnicersity</div>
+                 	
+                </div>
+                <div class="exp">
+	                <div>Experience</div>
+	                <div class="fa-camera-retro">&nbsp;Campus Reporter</div>
+	                <div class="fa-video-camera">&nbsp;Videographer&nbsp;of&nbsp;CCEF</div>
+	                <div class="fa-globe">&nbsp;experience</div>
+                </div>
+                <div class="skill">
+                	<div>Skill</div>
+                	<div class="ps fa-picture-o">&nbsp;PS
+                    	<span class="fa-circle"></span>
+                    	<span class="fa-circle"></span>
+                    	<span class="fa-circle"></span>
+                    </div>
+                	<div class="ai fa-pencil">&nbsp;AI                    	
+                    	<span class="fa-circle"></span>
+                    	<span class="fa-circle"></span>
+                    </div>
+                	<div class="fl fa-film">&nbsp;FL
+                    	<span class="fa-circle"></span>
+                    	<span class="fa-circle"></span>
+                    	<span class="fa-circle"></span>                    
+                    </div>
+                	<div class="dw fa-desktop">&nbsp;DW
+                    	<span class="fa-circle"></span>
+                    	<span class="fa-circle"></span>
+                    	<span class="fa-circle"></span>
+                    </div>
+                	<div class="css fa-css3">&nbsp;CSS
+                    	<span class="fa-circle"></span>
+                    	<span class="fa-circle"></span>
+                    	<span class="fa-circle"></span>
+                    	<span class="fa-circle"></span>
+                    </div>
+                	<div class="jq fa-keyboard-o">&nbsp;JQ
+                    	<span class="fa-circle"></span>
+                    	<span class="fa-circle"></span>
+                    	<span class="fa-circle"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer"></div> 
+	</div>
+</div>
+</body>
+</html>

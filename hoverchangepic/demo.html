@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style>
+*{margin:0; padding:0; list-style:none;}
+.wrap{
+	width:800px;
+	border:1 solid #F00;
+	margin:auto;
+}
+.wrap li:nth-child(-n+4){
+	width:152px;
+	height:90px;
+	display:inline-block;
+	border:1px solid #F00;
+	margin:10px 20px;
+}
+.wrap li:last-child{
+	height:576px;
+	border:1px solid #00F;
+	position:relative;
+}
+.wrap li:last-child img{
+	border:1px solid #F0F;
+	width:75%;
+	height:75%;
+	position:absolute;
+	left:13%;
+	top:10%;
+	opacity:0;
+	transition:.5s;
+}
+.wrap li:first-child:hover ~ li:last-child img:last-child{
+	opacity:1;
+}
+.wrap li:nth-child(2):hover ~ li:last-child img:first-child{
+	opacity:1;
+}
+.wrap li:nth-child(3):hover ~ li:last-child img:nth-child(3){
+	opacity:1;
+}
+.wrap li:nth-child(4):hover ~ li:last-child img:nth-child(2){
+	opacity:1;
+}
+
+</style>
+</head>
+
+<body>
+<div class="wrap">
+	<div class="changepic">
+    	<ul>
+        	<li><img src="images/smallpic2.jpg" width="152" height="90" /></li>
+            <li><img src="images/smallpic3.jpg" width="152" height="90" /></li>
+            <li><img src="images/smallpic4.jpg" width="152" height="90" /></li>
+            <li><img src="images/smallpic6.jpg" width="152" height="90" /></li>
+            <li>
+            	<img src="images/pic3.jpg" width="960" height="576" />
+                <img src="images/pic6.jpg" width="960" height="576" />
+            	<img src="images/pic4.jpg" width="960" height="576" />
+            	<img src="images/pic2.jpg" width="960" height="576" />
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
