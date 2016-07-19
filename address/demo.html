@@ -21,7 +21,7 @@
       };
       $('#city').fadeIn(1);
       var url=countryval+".txt";
-      $.post(url,function(data){
+      $.get(url,function(data){
         var citys = data.split(',');
         for(i=0;i<citys.length;i++){
           var opcity = citys[i].split('-');
@@ -60,7 +60,7 @@
       };
       $('#road').fadeIn(1);
       var url=cityval+".txt";
-      $.post(url,function(data){
+      $.get(url,function(data){
         var citys = data.split(',');
         for(i=0;i<citys.length;i++){
           var opcity = citys[i].split('-');
@@ -93,16 +93,16 @@
         <option value="臺灣">臺灣</option>
         <option value="日本">日本</option>
         <option value="美國">美國</option>
-      </select>  
+      </select>
     </li>
     <li>
       <select name="city" id="city">
-        
+
       </select>
     </li>
     <li>
       <select name="road" id="road">
-        
+
       </select>
     </li>
     <li class="clear">
